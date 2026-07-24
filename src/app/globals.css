@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0A0A0A;
+  --bg-elevated: #141010;
+  --red-900: #4A1414;
+  --red-700: #7A2420;
+  --red-500: #C4272B;
+  --red-400: #E8352F;
+  --text-primary: #F2ECE6;
+  --text-secondary: #8A7F7A;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  scroll-behavior: auto; /* Handled by Lenis */
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a1414;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7a2420;
+}
+
+/* Custom cursor styling desktop */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: none !important;
+  }
+}
+
+/* Dynamic Conic Gradient Border for Cards */
+.card-gradient-border {
+  position: relative;
+  background: #141010;
+  border-radius: 1rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 0deg,
+    #4a1414,
+    #7a2420,
+    #e8352f,
+    #7a2420,
+    #4a1414
+  );
+  border-radius: inherit;
+  z-index: -2;
+  animation: rotate-conic 8s linear infinite;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.card-gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: #141010;
+  border-radius: calc(1rem - 1px);
+  z-index: -1;
+}
+
+.card-gradient-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate-conic {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text stroke utility */
+.text-stroke-red {
+  -webkit-text-stroke: 1px rgba(232, 53, 47, 0.3);
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px rgba(242, 236, 230, 0.25);
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(74, 20, 20, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(74, 20, 20, 0.12) 1px, transparent 1px);
+}
