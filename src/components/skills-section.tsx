@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Code2, Server, Layout, Database, Boxes, Wrench } from 'lucide-react';
+import { SiJavascript, SiSpringboot, SiReact, SiPostgresql, SiDocker, SiGit } from 'react-icons/si';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -18,37 +18,37 @@ export function SkillsSection() {
     {
       id: '01',
       title: 'Lenguajes de Programación',
-      icon: Code2,
+      icon: SiJavascript,
       skills: ['Java', 'Go', 'JavaScript', 'TypeScript', 'Python', 'HTML5', 'CSS3'],
     },
     {
       id: '02',
       title: 'Desarrollo Backend',
-      icon: Server,
+      icon: SiSpringboot,
       skills: ['Spring Boot', 'Go + Gin', 'APIs RESTful', 'SOLID', 'Microservicios'],
     },
     {
       id: '03',
       title: 'Desarrollo Frontend',
-      icon: Layout,
+      icon: SiReact,
       skills: ['React', 'TypeScript', 'SPAs Responsivas', 'GSAP', 'Tailwind CSS'],
     },
     {
       id: '04',
       title: 'Bases de Datos & SQL',
-      icon: Database,
+      icon: SiPostgresql,
       skills: ['PostgreSQL', 'SQL Server', 'MongoDB', 'Diseño SQL', 'Optimización'],
     },
     {
       id: '05',
       title: 'Infraestructura & Eventos',
-      icon: Boxes,
+      icon: SiDocker,
       skills: ['Docker', 'Docker Compose', 'RabbitMQ', 'Event-Driven', 'FastAPI'],
     },
     {
       id: '06',
       title: 'Herramientas & Agilidad',
-      icon: Wrench,
+      icon: SiGit,
       skills: ['Git / GitHub', 'Figma', 'Pruebas Unitarias', 'Scrum (SFC)', 'Playwright'],
     },
   ];

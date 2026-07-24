@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Github, Copy, Check, ArrowUpRight, MapPin, Send } from 'lucide-react';
+import { TbMailFilled, TbCopy, TbCheck, TbArrowUpRight, TbSend2 } from 'react-icons/tb';
+import { PiMapPinFill } from 'react-icons/pi';
+import { SiGithub } from 'react-icons/si';
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -45,7 +47,7 @@ export function ContactSection() {
           <div className="lg:col-span-4 flex flex-col gap-4">
             <div className="p-6 bg-[#141010] border border-red-900/50 rounded-2xl space-y-4 shadow-xl">
               <div className="flex items-center gap-2 text-xs font-mono text-text-secondary uppercase">
-                <MapPin className="h-4 w-4 text-red-400" />
+                <PiMapPinFill className="h-4 w-4 text-red-400" />
                 <span>Ubicación Actual</span>
               </div>
               <p className="font-sans font-semibold text-text-primary text-lg">
@@ -68,7 +70,7 @@ export function ContactSection() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="p-3 rounded-xl bg-red-900/40 border border-red-700/50 text-red-400">
-                  <Mail className="h-6 w-6" />
+                  <TbMailFilled className="h-6 w-6" />
                 </div>
                 <button
                   onClick={copyEmail}
@@ -76,12 +78,12 @@ export function ContactSection() {
                 >
                   {copied ? (
                     <>
-                      <Check className="h-3.5 w-3.5 text-green-400" />
+                      <TbCheck className="h-3.5 w-3.5 text-green-400" />
                       <span className="text-green-400">¡Copiado!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="h-3.5 w-3.5" />
+                      <TbCopy className="h-3.5 w-3.5" />
                       <span>Copiar Email</span>
                     </>
                   )}
@@ -102,7 +104,7 @@ export function ContactSection() {
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-red-400 font-semibold group-hover:underline"
               >
                 <span>Abrir cliente de correo</span>
-                <Send className="h-3.5 w-3.5" />
+                <TbSend2 className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
@@ -118,10 +120,10 @@ export function ContactSection() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="p-3 rounded-xl bg-red-900/40 border border-red-700/50 text-red-400">
-                  <Github className="h-6 w-6" />
+                  <SiGithub className="h-6 w-6" />
                 </div>
                 <span className="p-2 rounded-full border border-red-700/50 group-hover:border-red-400 text-red-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
-                  <ArrowUpRight className="h-4 w-4" />
+                  <TbArrowUpRight className="h-4 w-4" />
                 </span>
               </div>
 

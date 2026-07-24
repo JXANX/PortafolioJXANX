@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Layers, Bot, Shield } from 'lucide-react';
+import { TbStack2Filled, TbRobotFace, TbDatabaseSearch } from 'react-icons/tb';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,7 +16,7 @@ interface Project {
   description: string;
   highlights: string[];
   stack: string[];
-  icon: typeof Layers;
+  icon: typeof TbStack2Filled;
 }
 
 export function ProjectsSection() {
@@ -47,7 +47,7 @@ export function ProjectsSection() {
         'TypeScript',
         'Docker',
       ],
-      icon: Layers,
+      icon: TbStack2Filled,
     },
     {
       number: '02',
@@ -57,7 +57,7 @@ export function ProjectsSection() {
         'Herramienta de automatización avanzada en Python + Playwright diseñada para la extracción y descarga masiva de certificados electorales sorteando protecciones anti-bot de Cloudflare con manejo resiliente de errores.',
       highlights: ['Bypass de Cloudflare', 'Playwright Automation', 'Descarga masiva estructurada'],
       stack: ['Python', 'Playwright', 'Automatización', 'Cloudflare Bypass', 'Web Scraping'],
-      icon: Bot,
+      icon: TbRobotFace,
     },
     {
       number: '03',
@@ -67,7 +67,7 @@ export function ProjectsSection() {
         'Cruces controlados de bases de datos con seguimiento de auditoría por colores para la verificación de testigos electorales en Quindío; migración de registros aplicando reglas estrictas de integridad referencial.',
       highlights: ['Trazabilidad visual por colores', 'Reglas estrictas de integridad', 'Migración segura SQL'],
       stack: ['Excel', 'Python', 'PostgreSQL', 'SQL Server', 'Control de Integridad de Datos'],
-      icon: Shield,
+      icon: TbDatabaseSearch,
     },
   ];
 

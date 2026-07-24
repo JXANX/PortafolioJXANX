@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ParticleCanvas } from './particle-canvas';
-import { ChevronDown, MapPin, Sparkles, Code2 } from 'lucide-react';
+import { PiTerminalWindowBold, PiMapPinFill, PiCaretDoubleDownBold } from 'react-icons/pi';
+import { TbBrandOpenSource } from 'react-icons/tb';
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export function HeroSection() {
         </div>
 
         <div className="hero-animate flex items-center gap-2 border border-red-900/40 bg-[#141010]/50 px-4 py-1.5 rounded-full">
-          <MapPin className="h-3.5 w-3.5 text-red-400" />
+          <PiMapPinFill className="h-3.5 w-3.5 text-red-400" />
           <span>Armenia, Quindío · Colombia</span>
         </div>
       </div>
@@ -60,7 +61,7 @@ export function HeroSection() {
       <div className="relative z-10 max-w-7xl w-full mx-auto my-auto py-8 flex flex-col justify-center">
         {/* Editorial Subheader */}
         <div className="hero-animate flex items-center gap-3 mb-3">
-          <Sparkles className="h-4 w-4 text-red-400" />
+          <TbBrandOpenSource className="h-5 w-5 text-red-400" />
           <span className="font-serifAccent italic text-2xl md:text-3xl text-red-400 font-normal">
             Estudiante de Ingeniería &amp;
           </span>
@@ -79,7 +80,7 @@ export function HeroSection() {
         {/* Role & Subtext Badge */}
         <div className="hero-animate mt-6 flex flex-wrap items-center gap-4">
           <div className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-red-400 uppercase tracking-widest bg-red-900/30 border border-red-700/50 px-4 py-2 rounded-full font-semibold shadow-md">
-            <Code2 className="h-4 w-4 text-red-400" />
+            <PiTerminalWindowBold className="h-4 w-4 text-red-400" />
             <span>Desarrollador de Software</span>
           </div>
 
@@ -131,7 +132,7 @@ export function HeroSection() {
         >
           <span>Explorar contenido</span>
           <div className="p-1.5 rounded-full border border-red-900/60 group-hover:border-red-400 transition-colors animate-bounce">
-            <ChevronDown className="h-3.5 w-3.5 text-red-400" />
+            <PiCaretDoubleDownBold className="h-3.5 w-3.5 text-red-400" />
           </div>
         </a>
       </div>

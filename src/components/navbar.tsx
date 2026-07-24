@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { TbMenu2, TbX, TbArrowUpRight } from 'react-icons/tb';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,7 +73,7 @@ export function Navbar() {
             className="group relative inline-flex items-center gap-2 rounded-full border border-red-400/80 px-5 py-2 text-xs font-mono tracking-wider uppercase text-text-primary transition-all duration-300 hover:border-red-400 hover:bg-red-500/10 hover:text-red-400 hover:shadow-[0_0_20px_rgba(232,53,47,0.25)]"
           >
             <span>Hablemos</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-red-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <TbArrowUpRight className="h-4 w-4 text-red-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
@@ -83,7 +83,7 @@ export function Navbar() {
           className="md:hidden p-2 text-text-primary hover:text-red-400 transition-colors"
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? <TbX className="h-6 w-6" /> : <TbMenu2 className="h-6 w-6" />}
         </button>
       </div>
 
@@ -106,7 +106,7 @@ export function Navbar() {
             className="mt-2 inline-flex justify-center items-center gap-2 rounded-full border border-red-400 px-6 py-3 text-sm font-mono tracking-wider uppercase text-text-primary bg-red-500/10"
           >
             <span>Hablemos</span>
-            <ArrowUpRight className="h-4 w-4 text-red-400" />
+            <TbArrowUpRight className="h-4 w-4 text-red-400" />
           </Link>
         </div>
       )}

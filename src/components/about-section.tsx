@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ShieldCheck, Award, GraduationCap, Cpu, CheckCircle2 } from 'lucide-react';
+import { PiShieldCheckeredFill, PiSealCheckFill } from 'react-icons/pi';
+import { TbAward, TbSchool, TbBrain, TbCircleCheckFilled } from 'react-icons/tb';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +83,7 @@ export function AboutSection() {
             {/* Woven Electoral Audit Narrative */}
             <div className="reveal-item bg-[#141010] border border-red-900/50 rounded-2xl p-6 md:p-8 space-y-4 my-6 shadow-xl">
               <div className="flex items-center gap-3 text-red-400">
-                <ShieldCheck className="h-6 w-6 text-red-400 shrink-0" />
+                <PiShieldCheckeredFill className="h-6 w-6 text-red-400 shrink-0" />
                 <h3 className="font-display text-xl uppercase tracking-wider text-text-primary">
                   Auditoría Informática Electoral — Quindío (2026)
                 </h3>
@@ -92,15 +93,15 @@ export function AboutSection() {
               </p>
               <ul className="space-y-2 text-sm text-text-secondary font-mono pt-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                   <span>Bot con <strong>Python + Playwright</strong> para descarga masiva de certificados sorteando protecciones Cloudflare.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                   <span>Generación masiva de documentos Word desde imágenes con <strong>python-docx</strong>.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                   <span>Cruces controlados de bases de datos con seguimiento y trazabilidad por colores.</span>
                 </li>
               </ul>
@@ -112,7 +113,7 @@ export function AboutSection() {
             {/* Education Box */}
             <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
               <div className="flex items-center gap-3 text-red-400 mb-4">
-                <GraduationCap className="h-5 w-5" />
+                <TbSchool className="h-5 w-5" />
                 <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
                   Formación Académica
                 </h3>
@@ -140,14 +141,14 @@ export function AboutSection() {
             {/* Certifications Box */}
             <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
               <div className="flex items-center gap-3 text-red-400 mb-4">
-                <Award className="h-5 w-5" />
+                <TbAward className="h-5 w-5" />
                 <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
                   Certificaciones
                 </h3>
               </div>
               <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-full bg-red-900/40 border border-red-700/50 flex items-center justify-center text-red-400 font-bold font-mono text-sm shrink-0">
-                  SFC
+                <div className="h-10 w-10 rounded-full bg-red-900/40 border border-red-700/50 flex items-center justify-center shrink-0">
+                  <PiSealCheckFill className="h-5 w-5 text-red-400" />
                 </div>
                 <div>
                   <h4 className="font-sans font-semibold text-text-primary text-base">
@@ -163,7 +164,7 @@ export function AboutSection() {
             {/* Mindset Box */}
             <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
               <div className="flex items-center gap-3 text-red-400 mb-2">
-                <Cpu className="h-5 w-5" />
+                <TbBrain className="h-5 w-5" />
                 <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
                   Filosofía de Desarrollo
                 </h3>
