@@ -67,10 +67,10 @@ export function ProjectsSection() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[#000080] hover:bg-[#0000A0] text-white font-display font-semibold text-sm transition-all shadow-lg self-start sm:self-auto"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl ghibli-glass text-text-primary hover:text-ghibli-amber hover:border-ghibli-amber/40 font-display font-semibold text-sm transition-all shadow-lg self-start sm:self-auto"
           >
             <span>Trabaja conmigo</span>
-            <TbArrowUpRight className="h-4 w-4" />
+            <TbArrowUpRight className="h-4 w-4 text-ghibli-amber" />
           </a>
         </div>
 
