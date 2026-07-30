@@ -1,178 +1,133 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import { SectionBg } from './section-bg';
 import { PiShieldCheckeredFill, PiSealCheckFill } from 'react-icons/pi';
-import { TbAward, TbSchool, TbBrain, TbCircleCheckFilled } from 'react-icons/tb';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { TbSchool, TbAward, TbCheck, TbTerminal2, TbCodeCircle, TbDatabase } from 'react-icons/tb';
 
 export function AboutSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current || !textRef.current) return;
-
-    const elements = textRef.current.querySelectorAll('.reveal-item');
-
-    gsap.fromTo(
-      elements,
-      {
-        y: 35,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 78%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  const experiences = [
+    {
+      id: '01',
+      title: 'Auditoría Informática Electoral',
+      icon: PiShieldCheckeredFill,
+      description: 'Auditor de procesos electorales en Quindío (2026). Bot Python + Playwright con bypass Cloudflare y generación masiva Word docx.',
+    },
+    {
+      id: '02',
+      title: 'Arquitectura Backend Java & Go',
+      icon: TbCodeCircle,
+      description: 'Desarrollo de microservicios con Spring Boot y Go (Gin), APIs RESTful estructuradas, RabbitMQ y patrones SOLID.',
+    },
+    {
+      id: '03',
+      title: 'Bases de Datos & SQL',
+      icon: TbDatabase,
+      description: 'Diseño de modelos relacionales en PostgreSQL y SQL Server, migración de datos con trazabilidad e integridad referencial.',
+    },
+  ];
 
   return (
-    <section
-      id="about"
-      ref={containerRef}
-      className="relative py-24 md:py-36 px-6 md:px-12 bg-bg border-t border-red-900/30 overflow-hidden"
-    >
-      {/* Background Accent glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-red-900/10 rounded-full blur-[150px] pointer-events-none" />
+    <section id="about" className="relative py-28 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/ghibli-about.jpg" alt="Ghibli Engineering Desk" overlayOpacity={0.8} />
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section Tag */}
-        <div className="flex items-center gap-3 font-mono text-xs text-red-400 uppercase tracking-widest mb-4">
-          <span className="font-bold">01</span>
-          <span className="h-px w-8 bg-red-700" />
-          <span>Sobre mí &amp; Trayectoria</span>
+      <div className="relative z-10 max-w-6xl mx-auto space-y-20">
+        {/* Section Header */}
+        <div>
+          <span className="font-mono text-xs text-ghibli-amber uppercase tracking-widest block mb-2 font-semibold">
+            SOBRE MÍ
+          </span>
+          <h2 className="font-display text-4xl sm:text-6xl font-extrabold text-text-primary max-w-3xl tracking-tight">
+            Ingeniería de software con dedicación &amp; rigor técnico.
+          </h2>
         </div>
 
-        {/* Section Headline */}
-        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl uppercase text-text-primary mb-12 tracking-tight">
-          Ingeniería de Software con <br />
-          <span className="font-serifAccent italic text-red-400 font-normal lowercase">
-            experiencia técnica real
-          </span>
-        </h2>
-
-        <div ref={textRef} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Main Narrative Column */}
-          <div className="lg:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-text-secondary">
-            <p className="reveal-item text-text-primary text-xl font-medium border-l-2 border-red-400 pl-4 py-1">
-              Soy <span className="text-red-400 font-bold">Juan Camilo</span>, estudiante de 6to semestre de <span className="text-text-primary">Ingeniería de Software</span> en la Institución Universitaria EAM (Armenia, Quindío), donde completé la doble titulación como Tecnólogo en Desarrollo de Software.
+        {/* Story Section + Education Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-7 ghibli-glass p-8 md:p-10 space-y-6">
+            <p className="text-lg md:text-xl font-display font-semibold text-text-primary leading-relaxed border-l-2 border-ghibli-amber pl-4">
+              Soy <span className="text-ghibli-amber">Juan Camilo Castañeda Lopera</span>, estudiante de 6to semestre de Ingeniería de Software en la IU EAM (Armenia, Quindío).
             </p>
 
-            <p className="reveal-item">
-              Mi enfoque combina el desarrollo backend en <strong className="text-text-primary">Java (Spring Boot)</strong> y <strong className="text-text-primary">Go (Gin)</strong>, diseño de bases de datos SQL relacionales (PostgreSQL, SQL Server) y desarrollo frontend en <strong className="text-text-primary">React &amp; TypeScript</strong>.
+            <p className="font-sans text-sm md:text-base text-text-secondary leading-relaxed">
+              Especializado en desarrollo backend con <strong className="text-text-primary">Java (Spring Boot)</strong> y <strong className="text-text-primary">Go (Gin)</strong>, bases de datos SQL y desarrollo de interfaces modernas en <strong className="text-text-primary">React &amp; TypeScript</strong>.
             </p>
 
-            {/* Woven Electoral Audit Narrative */}
-            <div className="reveal-item bg-[#141010] border border-red-900/50 rounded-2xl p-6 md:p-8 space-y-4 my-6 shadow-xl">
-              <div className="flex items-center gap-3 text-red-400">
-                <PiShieldCheckeredFill className="h-6 w-6 text-red-400 shrink-0" />
-                <h3 className="font-display text-xl uppercase tracking-wider text-text-primary">
-                  Auditoría Informática Electoral — Quindío (2026)
-                </h3>
+            <div className="pt-4 grid grid-cols-2 gap-4 font-mono text-xs border-t border-white/5">
+              <div>
+                <span className="text-text-muted block text-[10px] uppercase">Ubicación</span>
+                <span className="text-text-primary font-bold">Armenia, Quindío</span>
               </div>
-              <p className="text-sm md:text-base text-text-secondary leading-relaxed">
-                Como Auditor Informático de Procesos Electorales para el <em className="text-text-primary">Movimiento Ciudadano Def de la Patria</em> en la elección presidencial en Quindío, lideré la verificación técnica de bases de datos de testigos electorales en entornos críticos.
-              </p>
-              <ul className="space-y-2 text-sm text-text-secondary font-mono pt-2">
-                <li className="flex items-start gap-2">
-                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
-                  <span>Bot con <strong>Python + Playwright</strong> para descarga masiva de certificados sorteando protecciones Cloudflare.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
-                  <span>Generación masiva de documentos Word desde imágenes con <strong>python-docx</strong>.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <TbCircleCheckFilled className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
-                  <span>Cruces controlados de bases de datos con seguimiento y trazabilidad por colores.</span>
-                </li>
-              </ul>
+              <div>
+                <span className="text-text-muted block text-[10px] uppercase">Grado</span>
+                <span className="text-text-primary font-bold">Doble Titulación EAM</span>
+              </div>
             </div>
           </div>
 
-          {/* Sidebar Metrics & Education Cards */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Education Box */}
-            <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
-              <div className="flex items-center gap-3 text-red-400 mb-4">
+            <div className="ghibli-glass p-6 space-y-4">
+              <div className="flex items-center gap-3 text-ghibli-amber">
                 <TbSchool className="h-5 w-5" />
-                <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
+                <h3 className="font-display font-bold text-text-primary text-lg">
                   Formación Académica
                 </h3>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3 font-sans text-sm">
                 <div>
-                  <h4 className="font-sans font-semibold text-text-primary text-base">
-                    Ingeniería de Software (6to Semestre)
-                  </h4>
-                  <p className="text-xs text-text-secondary font-mono mt-0.5">
-                    IU EAM — Armenia (Doble Titulación con Tecnólogo en Desarrollo de Software)
-                  </p>
+                  <h4 className="font-semibold text-text-primary">Ingeniería de Software (6to Semestre)</h4>
+                  <p className="text-xs text-text-muted font-mono">IU EAM · Armenia · Doble Titulación</p>
                 </div>
-                <div className="border-t border-red-900/30 pt-3">
-                  <h4 className="font-sans font-semibold text-text-primary text-base">
-                    Técnico en Sistemas
-                  </h4>
-                  <p className="text-xs text-text-secondary font-mono mt-0.5">
-                    SENA — Titulado
-                  </p>
+                <div className="border-t border-white/5 pt-2">
+                  <h4 className="font-semibold text-text-primary">Técnico en Sistemas</h4>
+                  <p className="text-xs text-text-muted font-mono">SENA — Titulado</p>
                 </div>
               </div>
             </div>
 
-            {/* Certifications Box */}
-            <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
-              <div className="flex items-center gap-3 text-red-400 mb-4">
-                <TbAward className="h-5 w-5" />
-                <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
-                  Certificaciones
-                </h3>
+            <div className="ghibli-glass p-5 flex items-center gap-4">
+              <PiSealCheckFill className="h-8 w-8 text-ghibli-amber shrink-0" />
+              <div>
+                <h4 className="font-display font-bold text-text-primary text-base">Scrum Fundamentals Certified</h4>
+                <p className="text-xs text-ghibli-sage font-mono">SFC™ · ScrumStudy (2025)</p>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-full bg-red-900/40 border border-red-700/50 flex items-center justify-center shrink-0">
-                  <PiSealCheckFill className="h-5 w-5 text-red-400" />
-                </div>
-                <div>
-                  <h4 className="font-sans font-semibold text-text-primary text-base">
-                    Scrum Fundamentals Certified (SFC)
-                  </h4>
-                  <p className="text-xs text-text-secondary font-mono mt-0.5">
-                    ScrumStudy · 2025
+            </div>
+          </div>
+        </div>
+
+        {/* Process / Experience List Layout directly Inspired by Reference Image 2! */}
+        <div className="space-y-6 pt-6">
+          <h3 className="font-display text-2xl font-bold text-text-primary border-b border-white/10 pb-4">
+            Áreas de Especialidad &amp; Proceso
+          </h3>
+
+          <div className="space-y-6">
+            {experiences.map((exp) => {
+              const Icon = exp.icon;
+              return (
+                <div
+                  key={exp.id}
+                  className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 border-b border-white/5 group hover:border-ghibli-amber/30 transition-colors"
+                >
+                  {/* Left Side: Icon + Number + Bold Title (Reference Image 2 format) */}
+                  <div className="flex items-center gap-4 min-w-[300px]">
+                    <Icon className="h-5 w-5 text-ghibli-amber shrink-0" />
+                    <span className="font-mono text-xs text-text-muted font-bold">{exp.id}</span>
+                    <h4 className="font-display font-bold text-lg text-text-primary group-hover:text-ghibli-amber transition-colors">
+                      {exp.title}
+                    </h4>
+                  </div>
+
+                  {/* Center: Horizontal Line Divider (Reference Image 2 format) */}
+                  <div className="hidden md:block h-px bg-white/10 flex-1 mx-4 group-hover:bg-ghibli-amber/40 transition-colors" />
+
+                  {/* Right Side: Clean paragraph explanation */}
+                  <p className="font-sans text-sm text-text-secondary max-w-md leading-relaxed">
+                    {exp.description}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Mindset Box */}
-            <div className="reveal-item bg-[#141010]/80 border border-red-900/40 rounded-2xl p-6 hover:border-red-700/60 transition-colors">
-              <div className="flex items-center gap-3 text-red-400 mb-2">
-                <TbBrain className="h-5 w-5" />
-                <h3 className="font-mono text-xs uppercase tracking-widest text-text-primary font-semibold">
-                  Filosofía de Desarrollo
-                </h3>
-              </div>
-              <p className="text-xs md:text-sm text-text-secondary leading-relaxed">
-                Principios SOLID, microservicios resilientes, automatización de tareas repetitivas y código limpio.
-              </p>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,21 +1,12 @@
 import type { Metadata, Viewport } from 'next';
-import { Bebas_Neue, Instrument_Serif, Inter, JetBrains_Mono } from 'next/font/google';
+import { Outfit, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { SmoothScroll } from '@/components/smooth-scroll';
 import { CustomCursor } from '@/components/custom-cursor';
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-bebas',
-  display: 'swap',
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-instrument',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
@@ -32,33 +23,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0A',
+  themeColor: '#0D0B0E',
 };
 
 export const metadata: Metadata = {
-  title: 'Juan Camilo Castañeda Lopera | Software Engineer & Developer',
+  title: 'Juan Camilo Castañeda Lopera | Software Engineer',
   description:
-    'Portafolio profesional de Juan Camilo Castañeda Lopera. Estudiante de Ingeniería de Software, desarrollador Backend & Frontend con experiencia en Java (Spring Boot), Go (Gin), React, TypeScript y auditoría informática electoral.',
-  keywords: [
-    'Juan Camilo Castañeda Lopera',
-    'Ingeniería de Software',
-    'Desarrollador Backend',
-    'Desarrollador Frontend',
-    'Spring Boot',
-    'Go Gin',
-    'React TypeScript',
-    'Armenia Quindío Colombia',
-    'Auditoría Electoral',
-  ],
+    'Portafolio profesional de Juan Camilo Castañeda Lopera. Estudiante de Ingeniería de Software, desarrollador Backend & Frontend.',
   authors: [{ name: 'Juan Camilo Castañeda Lopera' }],
-  openGraph: {
-    title: 'Juan Camilo Castañeda Lopera | Software Engineer & Developer',
-    description:
-      'Portafolio profesional bold-editorial con arquitectura de microservicios, backend en Java/Go, frontend moderno y automatizaciones.',
-    type: 'website',
-    locale: 'es_CO',
-    siteName: 'Portafolio Juan Camilo Castañeda Lopera',
-  },
 };
 
 export default function RootLayout({
@@ -69,11 +41,12 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${bebasNeue.variable} ${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${outfit.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-bg text-text-primary antialiased selection:bg-red-500 selection:text-text-primary font-sans">
+      <body className="bg-bg text-text-primary antialiased selection:bg-ghibli-amber/30 selection:text-white font-sans">
         <SmoothScroll>
           <CustomCursor />
+          <div className="noise-overlay" aria-hidden="true" />
           {children}
         </SmoothScroll>
       </body>

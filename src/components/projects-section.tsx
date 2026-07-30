@@ -1,240 +1,134 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TbStack2Filled, TbRobotFace, TbDatabaseSearch } from 'react-icons/tb';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-interface Project {
-  number: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  highlights: string[];
-  stack: string[];
-  icon: typeof TbStack2Filled;
-}
+import { useState } from 'react';
+import Image from 'next/image';
+import { SectionBg } from './section-bg';
+import { ProjectDrawer, ProjectDetail } from './project-drawer';
+import { TbArrowUpRight, TbSparkles } from 'react-icons/tb';
 
 export function ProjectsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [mousePosMap, setMousePosMap] = useState<Record<string, { x: number; y: number; active: boolean }>>({});
+  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
-  const projects: Project[] = [
+  const projects: (ProjectDetail & { cardTint: string; image: string })[] = [
     {
       number: '01',
-      title: 'Sistema ERP de Gestión Empresarial — Microservicios',
+      title: 'Sistema ERP — Microservicios',
       subtitle: 'Ecosistema distribuido de 9 microservicios con optimización Docker',
       description:
-        'Desarrollé el microservicio de Inventario en Go + Gin + PostgreSQL con CRUD completo, control de stock y alertas de bajo inventario. Contenericé el servicio reduciendo la imagen Docker de ~300MB a ~15MB. Colaboré en el API Gateway con enrutamiento dinámico y validación JWT centralizada.',
-      highlights: ['Go + Gin + PostgreSQL', 'Reducción Docker ~300MB ➔ ~15MB', 'API Gateway JWT & RabbitMQ'],
-      stack: [
-        'Java',
-        'Spring Boot',
-        'Go',
-        'Gin',
-        'Node.js',
-        'Express',
-        'Python',
-        'FastAPI',
-        'PostgreSQL',
-        'MongoDB',
-        'RabbitMQ',
-        'React',
-        'TypeScript',
-        'Docker',
-      ],
-      icon: TbStack2Filled,
+        'Microservicio de Inventario en Go + Gin + PostgreSQL con CRUD completo, control de stock y alertas. Imagen Docker optimizada de ~300MB a ~15MB. API Gateway con validación JWT centralizada y RabbitMQ.',
+      highlights: ['Go + Gin + PostgreSQL', 'Docker ~300MB ➔ ~15MB', 'API Gateway JWT & RabbitMQ'],
+      stack: ['Go', 'Spring Boot', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React'],
+      category: 'Microservicios',
+      githubUrl: 'https://github.com/JXANX',
+      cardTint: 'card-tint-mint',
+      image: '/ghibli-projects.jpg',
     },
     {
       number: '02',
-      title: 'Sistema de Descarga Masiva de Certificados Electorales',
+      title: 'Descarga Masiva Certificados Electorales',
       subtitle: 'Bot de automatización para auditoría técnica de elecciones',
       description:
         'Herramienta de automatización avanzada en Python + Playwright diseñada para la extracción y descarga masiva de certificados electorales sorteando protecciones anti-bot de Cloudflare con manejo resiliente de errores.',
       highlights: ['Bypass de Cloudflare', 'Playwright Automation', 'Descarga masiva estructurada'],
-      stack: ['Python', 'Playwright', 'Automatización', 'Cloudflare Bypass', 'Web Scraping'],
-      icon: TbRobotFace,
+      stack: ['Python', 'Playwright', 'Cloudflare Bypass', 'Web Scraping'],
+      category: 'Automatización',
+      githubUrl: 'https://github.com/JXANX',
+      cardTint: 'card-tint-peach',
+      image: '/ghibli-skills.jpg',
     },
     {
       number: '03',
-      title: 'Auditoría y Migración de Bases de Datos Electorales',
+      title: 'Auditoría y Migración de Bases de Datos',
       subtitle: 'Cruces controlados e integridad de datos con trazabilidad',
       description:
         'Cruces controlados de bases de datos con seguimiento de auditoría por colores para la verificación de testigos electorales en Quindío; migración de registros aplicando reglas estrictas de integridad referencial.',
-      highlights: ['Trazabilidad visual por colores', 'Reglas estrictas de integridad', 'Migración segura SQL'],
-      stack: ['Excel', 'Python', 'PostgreSQL', 'SQL Server', 'Control de Integridad de Datos'],
-      icon: TbDatabaseSearch,
+      highlights: ['Trazabilidad visual', 'Reglas estrictas de integridad', 'Migración segura SQL'],
+      stack: ['Python', 'PostgreSQL', 'SQL Server', 'Control de Integridad'],
+      category: 'Bases de Datos',
+      githubUrl: 'https://github.com/JXANX',
+      cardTint: 'card-tint-amber',
+      image: '/ghibli-about.jpg',
     },
   ];
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const projectCards = sectionRef.current.querySelectorAll('.project-card-wrapper');
-
-    projectCards.forEach((card) => {
-      gsap.fromTo(
-        card,
-        {
-          opacity: 0,
-          y: 25,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, id: string) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    setMousePosMap((prev) => ({
-      ...prev,
-      [id]: { x, y, active: true },
-    }));
-  };
-
-  const handleMouseLeave = (id: string) => {
-    setMousePosMap((prev) => ({
-      ...prev,
-      [id]: { x: 0, y: 0, active: false },
-    }));
-  };
-
   return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className="relative py-24 md:py-36 px-6 md:px-12 bg-bg border-t border-red-900/30 overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Editorial Section Header */}
-        <div className="flex items-center gap-3 font-mono text-xs text-red-400 uppercase tracking-widest mb-4">
-          <span className="font-bold">03</span>
-          <span className="h-px w-8 bg-red-700" />
-          <span>Proyectos &amp; Arquitecturas</span>
+    <section id="projects" className="relative py-28 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/ghibli-projects.jpg" alt="Ghibli Architectural Map" overlayOpacity={0.84} />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Clean Header Inspired directly by Reference Image 3: "My best projects ✨" + "Trabajemos juntos ->" */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-16 gap-6">
+          <div className="flex items-center gap-3">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-text-primary tracking-tight">
+              Mis mejores proyectos
+            </h2>
+            <TbSparkles className="h-6 w-6 text-ghibli-amber animate-pulse" />
+          </div>
+
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[#000080] hover:bg-[#0000A0] text-white font-display font-semibold text-sm transition-all shadow-lg self-start sm:self-auto"
+          >
+            <span>Trabaja conmigo</span>
+            <TbArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl uppercase text-text-primary tracking-tight">
-            PROYECTOS <br />
-            <span className="font-serifAccent italic text-red-400 font-normal lowercase">
-              destacados &amp; sistemas
-            </span>
-          </h2>
+        {/* Clean Horizontal Grid Cards Inspired directly by Reference Image 3 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.number}
+              onClick={() => setSelectedProject(project)}
+              className={`p-6 rounded-3xl cursor-pointer group flex flex-col justify-between transition-all duration-400 hover:scale-[1.02] shadow-xl ${project.cardTint}`}
+            >
+              <div>
+                {/* Title with dot prefix e.g. .ERP Microservicios (From Reference Image 3) */}
+                <h3 className="font-display text-2xl font-bold text-text-primary mb-4 tracking-tight group-hover:text-ghibli-amber transition-colors">
+                  .{project.title}
+                </h3>
 
-          <p className="text-text-secondary text-sm md:text-base max-w-md font-sans leading-relaxed">
-            Soluciones reales enfocadas en arquitectura de microservicios backend, automatización de datos de alta integridad e interfaces web modernas.
-          </p>
-        </div>
+                {/* Screenshot / Artwork Container */}
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden mb-6 border border-white/10 shadow-md">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-        {/* Projects List */}
-        <div className="space-y-10">
-          {projects.map((project) => {
-            const Icon = project.icon;
-            const mouseState = mousePosMap[project.number] || { x: 0, y: 0, active: false };
+                <p className="font-sans text-xs text-text-secondary leading-relaxed line-clamp-3 mb-4">
+                  {project.description}
+                </p>
+              </div>
 
-            return (
-              <div key={project.number} className="project-card-wrapper">
-                <div
-                  onMouseMove={(e) => handleMouseMove(e, project.number)}
-                  onMouseLeave={() => handleMouseLeave(project.number)}
-                  className="card-gradient-border p-6 sm:p-8 md:p-12 relative overflow-hidden transition-transform duration-300 hover:scale-[1.01] hover:shadow-[0_10px_35px_rgba(232,53,47,0.18)]"
-                >
-                  {/* Magical Light Spot Follower */}
-                  {mouseState.active && (
-                    <div
-                      className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-0"
-                      style={{
-                        background: `radial-gradient(500px circle at ${mouseState.x}px ${mouseState.y}px, rgba(232, 53, 47, 0.12), transparent 75%)`,
-                      }}
-                    />
-                  )}
-
-                  {/* Watermark Badge */}
-                  <div className="absolute right-6 top-6 z-0 flex items-center gap-2 opacity-15 pointer-events-none select-none">
-                    <span className="font-mono text-5xl md:text-7xl font-bold text-red-400">
-                      {project.number}
+              {/* Card Footer (Link icon + Stack tags at bottom left, from Reference Image 3) */}
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5 max-w-[80%]">
+                  {project.stack.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-[10px] px-2 py-0.5 rounded bg-bg-elevated/70 text-text-muted border border-white/5"
+                    >
+                      {tech}
                     </span>
-                  </div>
+                  ))}
+                </div>
 
-                  <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    {/* Main Info */}
-                    <div className="lg:col-span-8 space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-red-900/40 border border-red-700/50 text-red-400 shrink-0">
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <span className="font-mono text-xs uppercase tracking-wider text-red-400 font-semibold">
-                          PROYECTO {project.number} // {project.subtitle}
-                        </span>
-                      </div>
-
-                      <h3 className="project-title font-display text-2xl sm:text-4xl md:text-5xl uppercase tracking-wide text-text-primary group-hover:text-red-400 transition-colors pr-12">
-                        {project.title}
-                      </h3>
-
-                      <p className="text-text-secondary text-sm md:text-base leading-relaxed font-sans max-w-3xl">
-                        {project.description}
-                      </p>
-
-                      {/* Highlights */}
-                      <div className="flex flex-wrap gap-2.5 pt-2">
-                        {project.highlights.map((h, i) => (
-                          <span
-                            key={i}
-                            className="font-mono text-xs text-red-400 bg-red-900/30 border border-red-700/50 px-3 py-1 rounded-full"
-                          >
-                            ✓ {h}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Stack Tags */}
-                    <div className="lg:col-span-4 flex flex-col justify-between h-full space-y-4">
-                      <div className="space-y-2">
-                        <h4 className="font-mono text-xs uppercase text-text-secondary tracking-widest mb-3">
-                          Stack Tecnológico
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.stack.map((tech) => (
-                            <span
-                              key={tech}
-                              className="font-mono text-xs bg-[#0A0A0A] text-text-primary px-3 py-1.5 rounded-md border border-red-900/50"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="p-2 rounded-lg bg-bg-elevated/80 text-text-primary group-hover:text-ghibli-amber group-hover:bg-ghibli-amber/10 transition-colors">
+                  <TbArrowUpRight className="h-4 w-4" />
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
+
+      <ProjectDrawer
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
