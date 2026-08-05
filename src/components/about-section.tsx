@@ -46,19 +46,19 @@ export function AboutSection() {
         {/* Asymmetric Grid: Image Left + Bio Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: About Image (Flat Abstract Terminal Frame) */}
+          {/* Left: About Image (Flat Abstract Frame) */}
           <div className="lg:col-span-4">
             <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12] shadow-lg">
               <Image
-                src="/mono-terminal.png"
-                alt="System Telemetry & Blueprint"
+                src="/mono-about.png"
+                alt="Engineering workspace"
                 fill
-                className="object-cover grayscale contrast-125 opacity-80"
+                className="object-cover grayscale contrast-125 opacity-70"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <span className="font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
-                  [ENGINEERING // TELEMETRY &amp; DIAGNOSTICS]
+                  [ENGINEERING // CODE]
                 </span>
               </div>
             </div>

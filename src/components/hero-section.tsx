@@ -122,20 +122,20 @@ export function HeroSection() {
             <InteractiveTerminal />
           </div>
 
-          {/* Right Lateral Column: Abstract Hardware Schematic Frame */}
+          {/* Right Lateral Column: Abstract Cyberpunk Artwork Frame */}
           <div className="lg:col-span-3 space-y-6 order-3">
             <div className="ghibli-glass p-3 rounded-xl border border-white/15 bg-[#0E0E12]/90 space-y-3 group hover:border-white/40 transition-all duration-300 shadow-xl">
               <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden grayscale contrast-125 border border-white/10">
                 <Image
-                  src="/mono-schematic.png"
-                  alt="ThinkPad Schematic Blueprint"
+                  src="/mono-hero.png"
+                  alt="Cyberpunk Matrix Girl"
                   fill
                   priority
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <span className="absolute bottom-3 left-3 font-mono text-[10px] text-white font-bold bg-black/80 px-2 py-1 rounded border border-white/20">
-                  [01 // SCHEMATIC BLUEPRINT]
+                  [01 // MATRIX VISION]
                 </span>
               </div>
 

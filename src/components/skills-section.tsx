@@ -76,14 +76,14 @@ export function SkillsSection() {
           <div className="lg:col-span-4">
             <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12] shadow-lg">
               <Image
-                src="/mono-keyboard.png"
-                alt="Tech stack workspace ASCII"
+                src="/mono-skills.png"
+                alt="Tech stack workspace"
                 fill
-                className="object-cover grayscale contrast-110 opacity-70"
+                className="object-cover grayscale contrast-110 opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0C]/90 to-transparent" />
               <span className="absolute bottom-3 left-3 font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
-                [STACK // HARDWARE &amp; ASCII INTERACTION]
+                [STACK // OVERVIEW]
               </span>
             </div>
           </div>

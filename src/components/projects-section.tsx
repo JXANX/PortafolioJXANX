@@ -62,7 +62,7 @@ export function ProjectsSection() {
       stack: ['Python', 'Docker', 'FastAPI', 'Playwright'],
       category: 'DevOps & Tooling',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-about.png',
+      image: '/mono-projects.png',
       aspect: 'aspect-[16/10]',
       colSpan: 'md:col-span-7',
     },
@@ -70,7 +70,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="relative py-32 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/mono-projects.png" alt="Code Background" overlayOpacity={0.93} />
+      <SectionBg src="/mono-contact.png" alt="Code Background" overlayOpacity={0.93} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Tag */}
