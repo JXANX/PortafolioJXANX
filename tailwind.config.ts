@@ -28,8 +28,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-space-grotesk)", "sans-serif"],
+        display: ["var(--font-outfit)", "sans-serif"],
+        sans: ["var(--font-jakarta)", "sans-serif"],
         mono: ["var(--font-jetbrains)", "monospace"],
       },
       animation: {

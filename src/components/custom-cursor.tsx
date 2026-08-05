@@ -113,14 +113,14 @@ export function CustomCursor() {
 
   return (
     <div
-      className={`pointer-events-none fixed inset-0 z-50 transition-opacity duration-300 ${
+      className={`pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       {/* Inner Dot */}
       <div
         ref={dotRef}
-        className={`fixed left-0 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-400 shadow-[0_0_10px_#E8352F] transition-transform duration-150 ${
+        className={`fixed left-0 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.9)] transition-transform duration-150 ${
           isHovered ? 'scale-0' : 'scale-100'
         }`}
       />
@@ -128,9 +128,9 @@ export function CustomCursor() {
       {/* Outer Ring */}
       <div
         ref={ringRef}
-        className={`fixed left-0 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-400/80 transition-all duration-300 ease-out ${
+        className={`fixed left-0 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 transition-all duration-300 ease-out ${
           isHovered
-            ? 'h-14 w-14 border-red-400 bg-red-500/15 backdrop-blur-[1px]'
+            ? 'h-14 w-14 border-white bg-white/15 backdrop-blur-[1px]'
             : 'h-8 w-8 bg-transparent'
         }`}
       />

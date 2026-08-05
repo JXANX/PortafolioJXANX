@@ -59,10 +59,10 @@ export function ParticleSunbeams() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Ambient warm sunbeam gradient on upper left
+      // Ambient cool silver sunbeam gradient on upper left
       const sunbeam = ctx.createLinearGradient(0, 0, width * 0.5, height * 0.5);
-      sunbeam.addColorStop(0, 'rgba(245, 222, 179, 0.08)');
-      sunbeam.addColorStop(1, 'rgba(253, 251, 247, 0)');
+      sunbeam.addColorStop(0, 'rgba(200, 200, 220, 0.06)');
+      sunbeam.addColorStop(1, 'rgba(255, 255, 255, 0)');
       ctx.fillStyle = sunbeam;
       ctx.fillRect(0, 0, width, height);
 
@@ -83,7 +83,7 @@ export function ParticleSunbeams() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(217, 155, 38, ${p.alpha})`; // Warm golden dust color
+        ctx.fillStyle = `rgba(220, 220, 235, ${p.alpha})`; // Cool silver dust color
         ctx.fill();
       }
 

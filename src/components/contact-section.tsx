@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { SectionBg } from './section-bg';
-import { TbMailFilled, TbCopy, TbCheck, TbArrowUpRight, TbSend2 } from 'react-icons/tb';
+import { TbMailFilled, TbCopy, TbCheck, TbArrowUpRight, TbSend2, TbClock } from 'react-icons/tb';
 import { PiMapPinFill } from 'react-icons/pi';
 import { SiGithub } from 'react-icons/si';
 
@@ -17,118 +17,127 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-36 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/ghibli-contact.jpg" alt="Ghibli Campfire at Night" overlayOpacity={0.7} />
+    <section id="contact" className="relative py-32 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/mono-contact.png" alt="Matrix Cyberpunk Dark Background" overlayOpacity={0.93} />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      {/* Monochrome ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Tag */}
-        <div className="flex items-center gap-3 font-mono text-xs text-ghibli-amber uppercase tracking-widest mb-6">
-          <span className="font-bold">04 // CONEXIÓN</span>
-          <span className="h-px w-12 bg-ghibli-amber/30" />
+        <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-6 font-semibold">
+          <span>04 // CONEXIÓN &amp; CONTACTO</span>
+          <span className="h-px w-16 bg-white/30" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-16">
-          <div className="lg:col-span-8 space-y-4">
-            <h2 className="font-display text-5xl sm:text-7xl font-black text-text-primary tracking-tight leading-[0.95]">
-              ¿Tomamos un café y <span className="text-ghibli-amber italic">conversamos?</span>
-            </h2>
-            <p className="text-text-secondary text-base md:text-lg max-w-xl font-sans leading-relaxed">
-              Disponible para proyectos backend/frontend, desarrollo a medida, consultoría o vacantes de ingeniería de software.
-            </p>
-          </div>
-
-          <div className="lg:col-span-4">
-            <div className="ghibli-glass p-6 space-y-3 border-l-4 border-l-ghibli-terracotta">
-              <div className="flex items-center gap-2 text-xs font-mono text-ghibli-terracotta uppercase font-bold">
-                <PiMapPinFill className="h-4 w-4" />
-                <span>UBICACIÓN</span>
-              </div>
-              <p className="font-display font-bold text-text-primary text-xl">
-                Armenia, Quindío — Colombia
-              </p>
-              <p className="text-xs text-text-muted">
-                Disponible para trabajo remoto e híbrido.
-              </p>
-            </div>
-          </div>
+        {/* Headline */}
+        <div className="mb-16 space-y-4 max-w-3xl">
+          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
+            Let&apos;s create something <span className="text-text-muted underline decoration-white/40 underline-offset-8">great together.</span>
+          </h2>
+          <p className="text-text-secondary text-base sm:text-xl font-sans leading-relaxed">
+            Disponible para desarrollo backend/frontend, arquitectura de microservicios, consultoría o vacantes de ingeniería de software.
+          </p>
         </div>
 
-        {/* Contact Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Email Box */}
-          <div className="ghibli-glass p-8 md:p-10 flex flex-col justify-between group space-y-8">
+        {/* Contact Cards Flat Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* 1. Direct Email Card */}
+          <div className="md:col-span-7 rounded-xl border border-white/15 bg-[#0E0E12]/90 p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#12121A] transition-all">
             <div>
               <div className="flex items-center justify-between mb-8">
-                <div className="p-3.5 rounded-xl bg-ghibli-amber/10 border border-ghibli-amber/20 text-ghibli-amber">
+                <div className="p-3 rounded-lg bg-white/5 border border-white/15 text-white">
                   <TbMailFilled className="h-6 w-6" />
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-2 text-xs font-mono text-text-secondary hover:text-text-primary bg-bg-surface/80 px-4 py-2 rounded-xl border border-white/5 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-mono text-text-secondary hover:text-white bg-white/5 px-4 py-2.5 rounded-lg border border-white/15 hover:border-white/40 transition-all"
                 >
                   {copied ? (
                     <>
-                      <TbCheck className="h-4 w-4 text-ghibli-sage" />
-                      <span className="text-ghibli-sage font-bold">¡Copiado!</span>
+                      <TbCheck className="h-4 w-4 text-white" />
+                      <span className="text-white font-bold">¡Copiado!</span>
                     </>
                   ) : (
                     <>
-                      <TbCopy className="h-4 w-4" />
+                      <TbCopy className="h-4 w-4 text-white" />
                       <span>Copiar Email</span>
                     </>
                   )}
                 </button>
               </div>
 
-              <span className="font-mono text-[10px] text-ghibli-amber uppercase tracking-widest block mb-2 font-bold">
-                CORREO DIRECTO
+              <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 font-bold">
+                CORREO ELECTRÓNICO DIRECTO
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-text-primary group-hover:text-ghibli-amber transition-colors break-all">
+              <h3 className="font-mono text-lg sm:text-2xl font-bold text-white group-hover:underline transition-all break-words">
                 {email}
               </h3>
             </div>
 
-            <div className="pt-4 border-t border-white/5">
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
               <a
                 href={`mailto:${email}`}
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-ghibli-amber font-bold group-hover:underline"
+                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-bold group-hover:underline"
               >
                 <span>Enviar correo ahora</span>
                 <TbSend2 className="h-4 w-4" />
               </a>
+              <span className="text-[10px] font-mono text-text-muted">RESPUESTA RÁPIDA</span>
             </div>
           </div>
 
-          {/* GitHub Box */}
+          {/* 2. GitHub Card */}
           <a
             href="https://github.com/JXANX"
             target="_blank"
             rel="noopener noreferrer"
-            className="ghibli-glass p-8 md:p-10 flex flex-col justify-between group space-y-8"
+            className="md:col-span-5 rounded-xl border border-white/15 bg-[#0E0E12]/90 p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#12121A] transition-all"
           >
             <div>
               <div className="flex items-center justify-between mb-8">
-                <div className="p-3.5 rounded-xl bg-ghibli-amber/10 border border-ghibli-amber/20 text-ghibli-amber">
+                <div className="p-3 rounded-lg bg-white/5 border border-white/15 text-white group-hover:scale-105 transition-transform">
                   <SiGithub className="h-6 w-6" />
                 </div>
-                <span className="p-2.5 rounded-xl border border-white/10 text-ghibli-amber group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                <span className="p-2.5 rounded-lg border border-white/15 text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform bg-white/5">
                   <TbArrowUpRight className="h-5 w-5" />
                 </span>
               </div>
 
-              <span className="font-mono text-[10px] text-ghibli-amber uppercase tracking-widest block mb-2 font-bold">
+              <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest block mb-2 font-bold">
                 REPOSITORIOS PÚBLICOS
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-text-primary group-hover:text-ghibli-amber transition-colors">
+              <h3 className="font-mono text-xl sm:text-2xl font-bold text-white group-hover:underline transition-all">
                 github.com/JXANX
               </h3>
             </div>
 
-            <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-text-muted">
-              <span>EXPLORAR REPOSITORIOS</span>
-              <span className="text-ghibli-amber font-bold">@JXANX</span>
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-text-muted">
+              <span>EXPLORAR CÓDIGO</span>
+              <span className="text-white font-bold">@JXANX</span>
             </div>
           </a>
+
+          {/* 3. Location Card */}
+          <div className="md:col-span-12 rounded-xl border border-white/15 bg-[#0E0E12]/90 p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-l-4 border-l-white">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-xs font-mono text-white uppercase font-bold">
+                <PiMapPinFill className="h-4 w-4" />
+                <span>UBICACIÓN &amp; BASE DE OPERACIONES</span>
+              </div>
+              <h4 className="font-display font-bold text-white text-xl sm:text-2xl">
+                Armenia, Quindío — Colombia
+              </h4>
+            </div>
+
+            <div className="flex items-center gap-4 border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-6 text-xs font-mono text-text-secondary">
+              <div className="flex items-center gap-2">
+                <TbClock className="h-4 w-4 text-white" />
+                <span>Zona Horaria: <strong className="text-white">UTC-5 (COT)</strong></span>
+              </div>
+              <span className="h-2 w-2 rounded-full bg-white animate-ping shrink-0" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
