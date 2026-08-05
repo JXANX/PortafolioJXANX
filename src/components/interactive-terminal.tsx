@@ -20,7 +20,7 @@ export function InteractiveTerminal() {
             • Estudiante 6to Semestre Ingeniería de Software (IU EAM)
           </p>
           <p className="text-text-secondary">
-            • Backend: Java (Spring Boot), Go (Gin), PostgreSQL, RabbitMQ
+            • Backend: Java (Spring Boot), PostgreSQL, RabbitMQ
           </p>
           <p className="text-text-secondary">
             • Frontend: React, TypeScript, Next.js, Tailwind CSS
@@ -61,7 +61,7 @@ export function InteractiveTerminal() {
       case 'skills':
         response = (
           <div className="flex flex-wrap gap-2 text-xs font-mono pt-1">
-            {['Java / Spring Boot', 'Go / Gin', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React / TypeScript', 'Python / Playwright'].map((s) => (
+            {['Java / Spring Boot', 'APIs RESTful', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React / TypeScript', 'Python / Playwright'].map((s) => (
               <span key={s} className="px-2 py-0.5 rounded bg-white/10 border border-white/30 text-white font-bold">
                 {s}
               </span>
@@ -72,7 +72,7 @@ export function InteractiveTerminal() {
       case 'projects':
         response = (
           <div className="text-xs font-mono text-text-secondary space-y-1">
-            <p className="text-text-primary font-bold">1. Sistema ERP (9 Microservicios) — Go, Spring Boot, Docker (300MB ➔ 15MB)</p>
+            <p className="text-text-primary font-bold">1. Sistema ERP (9 Microservicios) — Java, Spring Boot, Docker (300MB ➔ 15MB)</p>
             <p className="text-text-primary font-bold">2. Automatización Elecciones Quindío — Python, Playwright Cloudflare Bypass</p>
             <p className="text-text-primary font-bold">3. Migración &amp; Auditoría BD — PostgreSQL, SQL Server</p>
           </div>

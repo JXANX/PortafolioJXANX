@@ -15,9 +15,9 @@ export function AboutSection() {
     },
     {
       id: '02',
-      title: 'Arquitectura Backend Java & Go',
+      title: 'Arquitectura Backend Java',
       icon: TbCodeCircle,
-      description: 'Desarrollo de microservicios con Spring Boot y Go (Gin), APIs RESTful estructuradas, RabbitMQ y patrones SOLID.',
+      description: 'Desarrollo de microservicios con Spring Boot, APIs RESTful estructuradas, RabbitMQ y patrones SOLID.',
     },
     {
       id: '03',
@@ -46,19 +46,19 @@ export function AboutSection() {
         {/* Asymmetric Grid: Image Left + Bio Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: About Image (Flat Abstract Frame) */}
+          {/* Left: About Image (Flat Abstract Terminal Frame) */}
           <div className="lg:col-span-4">
             <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12] shadow-lg">
               <Image
-                src="/mono-about.png"
-                alt="Engineering workspace"
+                src="/mono-terminal.png"
+                alt="System Telemetry & Blueprint"
                 fill
-                className="object-cover grayscale contrast-125 opacity-70"
+                className="object-cover grayscale contrast-125 opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <span className="font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
-                  [ENGINEERING // CODE]
+                  [ENGINEERING // TELEMETRY &amp; DIAGNOSTICS]
                 </span>
               </div>
             </div>
@@ -73,7 +73,7 @@ export function AboutSection() {
               </p>
 
               <p className="font-sans text-sm md:text-base text-text-secondary leading-relaxed">
-                Especializado en desarrollo backend con <strong className="text-white">Java (Spring Boot)</strong> y <strong className="text-white">Go (Gin)</strong>, bases de datos SQL y desarrollo de interfaces modernas en <strong className="text-white">React &amp; TypeScript</strong>.
+                Especializado en desarrollo backend con <strong className="text-white">Java (Spring Boot)</strong>, bases de datos SQL y desarrollo de interfaces modernas en <strong className="text-white">React &amp; TypeScript</strong>.
               </p>
 
               <div className="pt-4 grid grid-cols-2 gap-4 font-mono text-xs border-t border-white/10">

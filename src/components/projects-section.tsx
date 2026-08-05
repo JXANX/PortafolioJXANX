@@ -15,12 +15,12 @@ export function ProjectsSection() {
       title: 'Sistema ERP — Microservicios',
       subtitle: 'Ecosistema distribuido de 9 microservicios con optimización Docker',
       description:
-        'Microservicio de Inventario en Go + Gin + PostgreSQL con CRUD completo, control de stock y alertas. Imagen Docker optimizada de ~300MB a ~15MB. API Gateway con validación JWT centralizada y RabbitMQ.',
-      highlights: ['Go + Gin + PostgreSQL', 'Docker ~300MB ➔ ~15MB', 'API Gateway JWT & RabbitMQ'],
-      stack: ['Go', 'Spring Boot', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React'],
+        'Microservicio de Inventario en Spring Boot + Java + PostgreSQL con CRUD completo, control de stock y alertas. Imagen Docker optimizada de ~300MB a ~15MB. API Gateway con validación JWT centralizada y RabbitMQ.',
+      highlights: ['Spring Boot + PostgreSQL', 'Docker ~300MB ➔ ~15MB', 'API Gateway JWT & RabbitMQ'],
+      stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React'],
       category: 'Microservicios',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-hero.png',
+      image: '/mono-schematic.png',
       aspect: 'aspect-[16/10]',
       colSpan: 'md:col-span-7',
     },
@@ -34,7 +34,7 @@ export function ProjectsSection() {
       stack: ['Python', 'Playwright', 'Cloudflare Bypass', 'Web Scraping'],
       category: 'Automatización',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-skills.png',
+      image: '/mono-terminal.png',
       aspect: 'aspect-[3/4]',
       colSpan: 'md:col-span-5',
     },
@@ -48,7 +48,7 @@ export function ProjectsSection() {
       stack: ['Python', 'PostgreSQL', 'SQL Server', 'Control de Integridad'],
       category: 'Bases de Datos',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-about.png',
+      image: '/mono-keyboard.png',
       aspect: 'aspect-[3/4]',
       colSpan: 'md:col-span-5',
     },
@@ -62,7 +62,7 @@ export function ProjectsSection() {
       stack: ['Python', 'Docker', 'FastAPI', 'Playwright'],
       category: 'DevOps & Tooling',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-projects.png',
+      image: '/mono-about.png',
       aspect: 'aspect-[16/10]',
       colSpan: 'md:col-span-7',
     },
@@ -70,7 +70,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="relative py-32 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/mono-contact.png" alt="Code Background" overlayOpacity={0.93} />
+      <SectionBg src="/mono-projects.png" alt="Code Background" overlayOpacity={0.93} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Tag */}

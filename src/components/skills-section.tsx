@@ -10,14 +10,14 @@ export function SkillsSection() {
       id: '01',
       title: 'Lenguajes',
       icon: SiJavascript,
-      skills: ['Java', 'Go', 'JavaScript', 'TypeScript', 'Python', 'HTML5/CSS3'],
+      skills: ['Java', 'JavaScript', 'TypeScript', 'Python', 'HTML5/CSS3', 'SQL'],
       colSpan: 'lg:col-span-4',
     },
     {
       id: '02',
       title: 'Backend',
       icon: SiSpringboot,
-      skills: ['Spring Boot', 'Go + Gin', 'APIs RESTful', 'SOLID', 'Microservicios'],
+      skills: ['Spring Boot', 'Spring Data / MVC', 'APIs RESTful', 'SOLID', 'Microservicios'],
       colSpan: 'lg:col-span-4',
     },
     {
@@ -76,14 +76,14 @@ export function SkillsSection() {
           <div className="lg:col-span-4">
             <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12] shadow-lg">
               <Image
-                src="/mono-skills.png"
-                alt="Tech stack workspace"
+                src="/mono-keyboard.png"
+                alt="Tech stack workspace ASCII"
                 fill
-                className="object-cover grayscale contrast-110 opacity-60"
+                className="object-cover grayscale contrast-110 opacity-70"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0C]/90 to-transparent" />
               <span className="absolute bottom-3 left-3 font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
-                [STACK // OVERVIEW]
+                [STACK // HARDWARE &amp; ASCII INTERACTION]
               </span>
             </div>
           </div>
