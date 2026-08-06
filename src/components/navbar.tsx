@@ -61,7 +61,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 ghibli-glass mx-4 mt-2 p-6 rounded-2xl space-y-4">
+        <div className="md:hidden absolute top-full left-0 right-0 ghibli-glass mx-4 mt-2 p-6 rounded-none space-y-4">
           {links.map((link) => (
             <Link
               key={link.href}

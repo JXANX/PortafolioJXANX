@@ -24,12 +24,6 @@ export function ContactSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header Tag */}
-        <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-6 font-semibold">
-          <span>CONEXIÓN &amp; CONTACTO</span>
-          <span className="h-px w-16 bg-white/30" />
-        </div>
-
         {/* Headline */}
         <div className="mb-16 space-y-4 max-w-3xl">
           <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
@@ -43,15 +37,15 @@ export function ContactSection() {
         {/* Contact Cards Flat Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* 1. Direct Email Card */}
-          <div className="md:col-span-7 rounded-xl border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all">
+          <div className="md:col-span-7 rounded-none border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all">
             <div>
               <div className="flex items-center justify-between mb-8">
-                <div className="p-3 rounded-lg bg-white/5 border border-white/15 text-white">
+                <div className="p-3 rounded-none bg-white/5 border border-white/15 text-white">
                   <TbMailFilled className="h-6 w-6" />
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-2 text-xs font-mono text-text-secondary hover:text-white bg-white/5 px-4 py-2.5 rounded-lg border border-white/15 hover:border-white/40 transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-mono text-text-secondary hover:text-white bg-white/5 px-4 py-2.5 rounded-none border border-white/15 hover:border-white/40 transition-all"
                 >
                   {copied ? (
                     <>
@@ -92,14 +86,14 @@ export function ContactSection() {
             href="https://github.com/JXANX"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-5 rounded-xl border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all"
+            className="md:col-span-5 rounded-none border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all"
           >
             <div>
               <div className="flex items-center justify-between mb-8">
-                <div className="p-3 rounded-lg bg-white/5 border border-white/15 text-white">
+                <div className="p-3 rounded-none bg-white/5 border border-white/15 text-white">
                   <SiGithub className="h-6 w-6" />
                 </div>
-                <span className="p-2.5 rounded-lg border border-white/15 text-white bg-white/5">
+                <span className="p-2.5 rounded-none border border-white/15 text-white bg-white/5">
                   <TbArrowUpRight className="h-5 w-5" />
                 </span>
               </div>
@@ -119,7 +113,7 @@ export function ContactSection() {
           </a>
 
           {/* 3. Location Card */}
-          <div className="md:col-span-12 rounded-xl border border-white/15 bg-[#0E0E12] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-l-4 border-l-white">
+          <div className="md:col-span-12 rounded-none border border-white/15 bg-[#0E0E12] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-l-4 border-l-white">
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-xs font-mono text-white uppercase font-bold">
                 <PiMapPinFill className="h-4 w-4" />
@@ -135,7 +129,7 @@ export function ContactSection() {
                 <TbClock className="h-4 w-4 text-white" />
                 <span>Zona Horaria: <strong className="text-white">UTC-5 (COT)</strong></span>
               </div>
-              <span className="h-2 w-2 rounded-full bg-white shrink-0" />
+              <span className="h-2 w-2 rounded-none bg-white shrink-0" />
             </div>
           </div>
         </div>

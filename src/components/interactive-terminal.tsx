@@ -31,7 +31,8 @@ export function InteractiveTerminal() {
   ]);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
 
   const handleCommand = (cmdStr: string) => {
     const cleanCmd = cmdStr.trim().toLowerCase();
@@ -60,13 +61,9 @@ export function InteractiveTerminal() {
         break;
       case 'skills':
         response = (
-          <div className="flex flex-wrap gap-2 text-xs font-mono pt-1">
-            {['Java / Spring Boot', 'APIs RESTful', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React / TypeScript', 'Python / Playwright'].map((s) => (
-              <span key={s} className="px-2 py-0.5 rounded bg-white/10 border border-white/30 text-white font-bold">
-                {s}
-              </span>
-            ))}
-          </div>
+          <p className="text-xs font-mono text-text-secondary tracking-wide pt-1">
+            {['Java / Spring Boot', 'APIs RESTful', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React / TypeScript', 'Python / Playwright'].join(' · ')}
+          </p>
         );
         break;
       case 'projects':
@@ -105,17 +102,25 @@ export function InteractiveTerminal() {
   };
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Skip auto-scroll on initial mount to prevent page from jumping down
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    // Scroll only the internal terminal container, not the page
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   return (
-    <div className="w-full max-w-2xl rounded-2xl border border-white/20 bg-bg-elevated/90 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl overflow-hidden font-mono text-left my-6 transition-all duration-300 hover:border-white/40">
+    <div className="w-full max-w-2xl rounded-none border border-white/20 bg-bg-elevated/90 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl overflow-hidden font-mono text-left my-6 transition-all duration-300 hover:border-white/40">
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-bg-surface/80 border-b border-white/10 select-none">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-[#FF5F56]/80" />
-          <div className="h-3 w-3 rounded-full bg-[#FFBD2E]/80" />
-          <div className="h-3 w-3 rounded-full bg-[#27C93F]/80" />
+          <div className="h-3 w-3 rounded-none bg-[#FF5F56]/80" />
+          <div className="h-3 w-3 rounded-none bg-[#FFBD2E]/80" />
+          <div className="h-3 w-3 rounded-none bg-[#27C93F]/80" />
           <span className="ml-2 text-xs text-text-muted font-bold flex items-center gap-1.5">
             <TbTerminal2 className="h-3.5 w-3.5 text-white" />
             jcxanx@eam-dev: ~/portfolio
@@ -128,7 +133,7 @@ export function InteractiveTerminal() {
             <button
               key={cmd}
               onClick={() => handleCommand(cmd)}
-              className="text-[10px] px-2 py-0.5 rounded bg-bg-elevated text-text-muted hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
+              className="text-[10px] px-2 py-0.5 rounded-none bg-bg-elevated text-text-muted hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
             >
               {cmd}
             </button>
@@ -137,7 +142,7 @@ export function InteractiveTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <div className="p-4 space-y-3 max-h-64 overflow-y-auto custom-scrollbar text-xs">
+      <div ref={scrollContainerRef} className="p-4 space-y-3 max-h-64 overflow-y-auto custom-scrollbar text-xs">
         {history.map((item, idx) => (
           <div key={idx} className="space-y-1">
             <div className="flex items-center gap-2 text-text-muted">
@@ -173,7 +178,6 @@ export function InteractiveTerminal() {
             <TbCornerDownLeft className="h-3.5 w-3.5" />
           </button>
         </form>
-        <div ref={bottomRef} />
       </div>
     </div>
   );

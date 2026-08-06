@@ -21,6 +21,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       touchMultiplier: 2,
     });
 
+    // Force scroll to top on page load
+    window.scrollTo(0, 0);
+    lenis.scrollTo(0, { immediate: true });
+
     function updateLenis(time: number) {
       lenis.raf(time * 1000);
     }

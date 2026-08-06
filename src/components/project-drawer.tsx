@@ -98,12 +98,12 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
               onClick={triggerClose}
               className="inline-flex items-center gap-2 text-xs font-mono uppercase text-text-muted hover:text-white transition-colors"
             >
-              <span>← Volver a Escenas de Proyectos</span>
+              <span>← Volver a Proyectos</span>
             </button>
 
             <button
               onClick={triggerClose}
-              className="p-2 rounded-lg border border-white/10 text-text-secondary hover:text-text-primary hover:border-white transition-colors"
+              className="p-2 rounded-none border border-white/10 text-text-secondary hover:text-text-primary hover:border-white transition-colors"
               aria-label="Cerrar panel"
             >
               <TbX className="h-5 w-5" />
@@ -113,7 +113,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
           {/* Project Title & Subtitle */}
           <div className="drawer-anim-item mb-6">
             <span className="font-mono text-xs text-white font-bold tracking-wider uppercase block mb-2">
-              CATEGORÍA // {project.category}
+              {project.category}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-2">
               {project.title}
@@ -124,23 +124,19 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
           </div>
 
           {/* Visual Preview Graphic Box */}
-          <div className="drawer-anim-item w-full aspect-video rounded-xl bg-[#0E0E12] border border-white/15 p-6 flex flex-col justify-between mb-8 relative overflow-hidden">
+          <div className="drawer-anim-item w-full aspect-video rounded-none bg-[#0E0E12] border border-white/15 p-6 flex flex-col justify-between mb-8 relative overflow-hidden">
             <div className="flex items-center justify-between font-mono text-xs text-white">
               <span>ESQUEMA DE ARQUITECTURA TÉCNICA</span>
-              <span className="h-2.5 w-2.5 rounded-full bg-white" />
+              <span className="h-2.5 w-2.5 rounded-none bg-white" />
             </div>
 
             <div className="my-auto text-center space-y-3">
               <h3 className="font-display text-2xl font-bold text-white">
                 {project.title}
               </h3>
-              <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {project.stack.slice(0, 5).map((t) => (
-                  <span key={t} className="font-mono text-[11px] px-3 py-1 rounded-md bg-white/5 text-white border border-white/15">
-                    {t}
-                  </span>
-                ))}
-              </div>
+              <p className="font-mono text-[11px] text-text-secondary tracking-wide">
+                {project.stack.slice(0, 5).join(' · ')}
+              </p>
             </div>
 
             <div className="font-mono text-[10px] text-text-muted text-right">
@@ -178,16 +174,9 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
             <h3 className="font-display text-xl font-bold text-text-primary">
               Stack de Tecnologías
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="font-mono text-xs px-3 py-1.5 rounded-md bg-bg-surface border border-white/10 text-text-secondary hover:text-white hover:border-white/40 transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <p className="font-mono text-xs text-text-secondary leading-relaxed tracking-wide">
+              {project.stack.join(' · ')}
+            </p>
           </div>
         </div>
 
@@ -197,7 +186,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
             href={project.githubUrl || "https://github.com/JXANX"}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex justify-center items-center gap-2 rounded-xl bg-white hover:bg-white/90 text-black font-mono text-sm py-3.5 px-6 font-bold transition-all"
+            className="w-full inline-flex justify-center items-center gap-2 rounded-none bg-white hover:bg-white/90 text-black font-mono text-sm py-3.5 px-6 font-bold transition-all"
           >
             <span>Ver Proyecto en GitHub / Código</span>
             <TbArrowUpRight className="h-4 w-4" />

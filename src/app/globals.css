@@ -42,7 +42,7 @@ html.lenis, html.lenis body { height: auto; }
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0A0A0C; }
-::-webkit-scrollbar-thumb { background: #262630; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #262630; border-radius: 0px; }
 ::-webkit-scrollbar-thumb:hover { background: #FFFFFF; }
 
 /* Custom cursor desktop */
@@ -57,7 +57,7 @@ html.lenis, html.lenis body { height: auto; }
 .ghibli-glass {
   background: #0E0E12;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
+  border-radius: 0px;
   box-shadow: none !important;
   transform: none !important;
   transition: border-color 0.25s ease, background-color 0.25s ease;
@@ -73,7 +73,7 @@ html.lenis, html.lenis body { height: auto; }
 .ghibli-glass-light {
   background: #14141A;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
+  border-radius: 0px;
   box-shadow: none !important;
 }
 

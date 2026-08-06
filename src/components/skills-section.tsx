@@ -55,14 +55,8 @@ export function SkillsSection() {
       <SectionBg src="/mono-skills.png" alt="Monochrome Tech Stack Wallpaper" overlayOpacity={0.92} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header Tag */}
-        <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-6">
-          <span className="font-bold">ARSENAL TÉCNICO</span>
-          <span className="h-px w-12 bg-white/30" />
-        </div>
-
         {/* Title + Image Side-by-Side */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 pt-4">
           <div className="lg:col-span-8">
             <h2 className="font-display text-4xl sm:text-6xl font-black text-white tracking-tight max-w-xl mb-4">
               Dominio Técnico &amp; <span className="text-text-muted underline decoration-white/30 underline-offset-4">Tecnologías.</span>
@@ -74,7 +68,7 @@ export function SkillsSection() {
 
           {/* Side Abstract Image */}
           <div className="lg:col-span-4">
-            <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12]">
+            <div className="relative aspect-[16/9] w-full rounded-none overflow-hidden border border-white/15 bg-[#0E0E12]">
               <Image
                 src="/mono-skills.png"
                 alt="Tech stack workspace"
@@ -82,9 +76,6 @@ export function SkillsSection() {
                 className="object-cover grayscale contrast-110 opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0C]/90 to-transparent" />
-              <span className="absolute bottom-3 left-3 font-mono text-[10px] text-white font-bold bg-black/80 px-2 py-1 rounded border border-white/20">
-                [STACK // OVERVIEW]
-              </span>
             </div>
           </div>
         </div>
@@ -96,14 +87,14 @@ export function SkillsSection() {
             return (
               <div
                 key={cat.title}
-                className={`rounded-xl border border-white/15 bg-[#0E0E12] p-7 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:border-white/40 hover:bg-[#121218] ${cat.colSpan}`}
+                className={`rounded-none border border-white/15 bg-[#0E0E12] p-7 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:border-white/40 hover:bg-[#121218] ${cat.colSpan}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <span className="font-mono text-xs text-white font-bold tracking-wider uppercase">
                       {cat.title}
                     </span>
-                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/15 text-white group-hover:border-white/40 transition-all duration-300">
+                    <div className="p-2.5 rounded-none bg-white/5 border border-white/15 text-white group-hover:border-white/40 transition-all duration-300">
                       <Icon className="h-4 w-4" />
                     </div>
                   </div>
@@ -112,21 +103,14 @@ export function SkillsSection() {
                     {cat.title}
                   </h3>
 
-                  <div className="flex flex-wrap gap-2">
-                    {cat.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="font-mono text-xs px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-text-secondary group-hover:text-white group-hover:border-white/25 transition-all duration-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="font-mono text-xs text-text-secondary leading-relaxed tracking-wide">
+                    {cat.skills.join(' · ')}
+                  </p>
                 </div>
 
                 <div className="mt-6 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-text-muted">
                   <span>DOMINIO VERIFICADO</span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                  <span className="h-1.5 w-1.5 rounded-none bg-white" />
                 </div>
               </div>
             );

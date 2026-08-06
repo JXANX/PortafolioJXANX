@@ -73,12 +73,6 @@ export function ProjectsSection() {
       <SectionBg src="/mono-contact.png" alt="Code Background" overlayOpacity={0.93} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header Tag */}
-        <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-4 font-semibold">
-          <span>PORTAFOLIO SELECCIONADO</span>
-          <span className="h-px w-16 bg-white/30" />
-        </div>
-
         {/* Selected Work Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <h2 className="font-display text-5xl sm:text-7xl font-black text-white tracking-tight uppercase">
@@ -87,7 +81,7 @@ export function ProjectsSection() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-white/20 bg-[#0E0E12] text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 self-start md:self-auto"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-none border border-white/20 bg-[#0E0E12] text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 self-start md:self-auto"
           >
             <span>Iniciar un Proyecto</span>
             <TbArrowUpRight className="h-4 w-4" />
@@ -100,7 +94,7 @@ export function ProjectsSection() {
             <div
               key={project.title}
               onClick={() => setSelectedProject(project)}
-              className={`${project.colSpan} rounded-xl border border-white/15 bg-[#0E0E12] p-5 cursor-pointer group flex flex-col justify-between transition-all duration-300 hover:border-white/40 hover:bg-[#121218]`}
+              className={`${project.colSpan} rounded-none border border-white/15 bg-[#0E0E12] p-5 cursor-pointer group flex flex-col justify-between transition-all duration-300 hover:border-white/40 hover:bg-[#121218]`}
             >
               <div>
                 {/* Header info bar */}
@@ -110,7 +104,7 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Screenshot Container (Flat frame) */}
-                <div className={`relative ${project.aspect} w-full rounded-lg overflow-hidden mb-5 border border-white/10 grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500`}>
+                <div className={`relative ${project.aspect} w-full rounded-none overflow-hidden mb-5 border border-white/10 grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500`}>
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -118,9 +112,6 @@ export function ProjectsSection() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity" />
-                  <span className="absolute top-3 left-3 font-mono text-[10px] text-white font-bold bg-black/80 px-2.5 py-1 rounded border border-white/20">
-                    [{project.category.toUpperCase()}]
-                  </span>
                 </div>
 
                 <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight group-hover:underline decoration-white/30 underline-offset-4 transition-all">
@@ -134,18 +125,11 @@ export function ProjectsSection() {
 
               {/* Card Footer */}
               <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5 max-w-[80%]">
-                  {project.stack.slice(0, 4).map((tech) => (
-                    <span
-                      key={tech}
-                      className="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-text-muted border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                <p className="font-mono text-[10px] text-text-muted tracking-wide max-w-[80%]">
+                  {project.stack.slice(0, 4).join(' · ')}
+                </p>
 
-                <div className="p-2 rounded-lg border border-white/15 bg-white/5 text-white group-hover:bg-white group-hover:text-black transition-all">
+                <div className="p-2 rounded-none border border-white/15 bg-white/5 text-white group-hover:bg-white group-hover:text-black transition-all">
                   <TbArrowUpRight className="h-4 w-4" />
                 </div>
               </div>
