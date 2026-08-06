@@ -75,7 +75,7 @@ export function ProjectsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Tag */}
         <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-4 font-semibold">
-          <span>03 // PORTAFOLIO SELECCIONADO</span>
+          <span>PORTAFOLIO SELECCIONADO</span>
           <span className="h-px w-16 bg-white/30" />
         </div>
 
@@ -87,7 +87,7 @@ export function ProjectsSection() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-white/20 bg-[#0E0E12] text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 shadow-lg self-start md:self-auto"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-white/20 bg-[#0E0E12] text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 self-start md:self-auto"
           >
             <span>Iniciar un Proyecto</span>
             <TbArrowUpRight className="h-4 w-4" />
@@ -98,28 +98,28 @@ export function ProjectsSection() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
           {projects.map((project) => (
             <div
-              key={project.number}
+              key={project.title}
               onClick={() => setSelectedProject(project)}
-              className={`${project.colSpan} rounded-xl border border-white/15 bg-[#0E0E12]/90 p-5 cursor-pointer group flex flex-col justify-between transition-all duration-400 hover:border-white/40 hover:bg-[#12121A]`}
+              className={`${project.colSpan} rounded-xl border border-white/15 bg-[#0E0E12] p-5 cursor-pointer group flex flex-col justify-between transition-all duration-300 hover:border-white/40 hover:bg-[#121218]`}
             >
               <div>
                 {/* Header info bar */}
                 <div className="flex items-center justify-between font-mono text-xs text-text-muted mb-4 pb-3 border-b border-white/10">
-                  <span className="text-white font-bold">{project.number}</span>
-                  <span className="uppercase text-[10px]">{project.category}</span>
+                  <span className="uppercase text-[10px] text-white font-bold tracking-wider">{project.category}</span>
+                  <span className="text-[10px] text-text-muted font-mono">VER DETALLES →</span>
                 </div>
 
-                {/* Screenshot Container (Flat frame, side placement aesthetic) */}
-                <div className={`relative ${project.aspect} w-full rounded-lg overflow-hidden mb-5 border border-white/10 grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700`}>
+                {/* Screenshot Container (Flat frame) */}
+                <div className={`relative ${project.aspect} w-full rounded-lg overflow-hidden mb-5 border border-white/10 grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500`}>
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity" />
-                  <span className="absolute top-3 left-3 font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
-                    [{project.number} // {project.category.toUpperCase()}]
+                  <span className="absolute top-3 left-3 font-mono text-[10px] text-white font-bold bg-black/80 px-2.5 py-1 rounded border border-white/20">
+                    [{project.category.toUpperCase()}]
                   </span>
                 </div>
 

@@ -30,7 +30,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-outfit)", "sans-serif"],
         sans: ["var(--font-jakarta)", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "monospace"],
+        mono: ["var(--font-dm-mono)", "monospace"],
       },
       animation: {
         float: "float 6s ease-in-out infinite",

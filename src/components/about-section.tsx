@@ -35,7 +35,7 @@ export function AboutSection() {
         {/* Section Header */}
         <div>
           <div className="flex items-center gap-3 font-mono text-xs text-white uppercase tracking-widest mb-3 font-semibold">
-            <span>01 // SOBRE MÍ &amp; VISIÓN</span>
+            <span>SOBRE MÍ &amp; VISIÓN</span>
             <span className="h-px w-12 bg-white/30" />
           </div>
           <h2 className="font-display text-4xl sm:text-6xl font-black text-white max-w-3xl tracking-tight leading-[1.08]">
@@ -48,7 +48,7 @@ export function AboutSection() {
           
           {/* Left: About Image (Flat Abstract Frame) */}
           <div className="lg:col-span-4">
-            <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12] shadow-lg">
+            <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden border border-white/15 bg-[#0E0E12]">
               <Image
                 src="/mono-about.png"
                 alt="Engineering workspace"
@@ -57,7 +57,7 @@ export function AboutSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
-                <span className="font-mono text-[10px] text-white font-bold bg-black/70 px-2 py-1 rounded border border-white/20">
+                <span className="font-mono text-[10px] text-white font-bold bg-black/80 px-2 py-1 rounded border border-white/20">
                   [ENGINEERING // CODE]
                 </span>
               </div>
@@ -67,7 +67,7 @@ export function AboutSection() {
           {/* Right: Bio + Education Flat Cards */}
           <div className="lg:col-span-8 space-y-6">
             {/* Bio Card */}
-            <div className="rounded-xl border border-white/15 bg-[#0E0E12]/90 p-8 space-y-5">
+            <div className="rounded-xl border border-white/15 bg-[#0E0E12] p-8 space-y-5">
               <p className="text-lg md:text-xl font-display font-semibold text-white leading-relaxed border-l-2 border-white pl-4">
                 Soy <span className="text-white font-bold">Juan Camilo</span>, estudiante de 6to semestre de Ingeniería de Software en la IU EAM (Armenia, Quindío).
               </p>
@@ -90,7 +90,7 @@ export function AboutSection() {
 
             {/* Education + Cert Row (Side by Side Flat) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="rounded-xl border border-white/15 bg-[#0E0E12]/90 p-6 space-y-4">
+              <div className="rounded-xl border border-white/15 bg-[#0E0E12] p-6 space-y-4">
                 <div className="flex items-center gap-3 text-white">
                   <TbSchool className="h-5 w-5" />
                   <h3 className="font-display font-bold text-white text-base">
@@ -109,7 +109,7 @@ export function AboutSection() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-white/15 bg-[#0E0E12]/90 p-6 flex items-start gap-4">
+              <div className="rounded-xl border border-white/15 bg-[#0E0E12] p-6 flex items-start gap-4">
                 <PiSealCheckFill className="h-10 w-10 text-white shrink-0 mt-1" />
                 <div>
                   <h4 className="font-display font-bold text-white text-base mb-1">Scrum Fundamentals Certified</h4>
@@ -136,8 +136,7 @@ export function AboutSection() {
                 key={exp.id}
                 className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-5 border-b border-white/10 group hover:bg-white/[0.03] transition-all px-2 -mx-2"
               >
-                <div className="flex items-center gap-4 min-w-[300px]">
-                  <span className="font-mono text-sm text-text-muted font-bold w-6">{exp.id}</span>
+                <div className="flex items-center gap-4 min-w-[280px]">
                   <div className="p-2 rounded-lg border border-white/15 bg-[#0E0E12]">
                     <Icon className="h-4 w-4 text-white" />
                   </div>

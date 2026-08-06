@@ -15,7 +15,7 @@
   --text-muted: #6E6E7E;
   --font-display: var(--font-outfit), sans-serif;
   --font-sans: var(--font-jakarta), sans-serif;
-  --font-mono: var(--font-jetbrains), monospace;
+  --font-mono: var(--font-dm-mono), monospace;
 }
 
 html {
@@ -49,32 +49,32 @@ html.lenis, html.lenis body { height: auto; }
 @media (pointer: fine) {
   body.custom-cursor-active,
   body.custom-cursor-active a,
-  body.custom-cursor-active button { cursor: none !important; }
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"] { cursor: none !important; }
 }
 
-/* Flat & Abstract Monochrome Cards */
+/* Flat Monochrome Cards - Literal Flat Design */
 .ghibli-glass {
-  background: rgba(14, 14, 18, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #0E0E12;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none !important;
+  transform: none !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .ghibli-glass:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35);
+  background-color: #121218;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 .ghibli-glass-light {
-  background: rgba(22, 22, 28, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #14141A;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
+  box-shadow: none !important;
 }
 
 /* Card Tint Flat Monochrome Gradients */

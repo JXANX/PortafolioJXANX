@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { Outfit, Plus_Jakarta_Sans, DM_Mono } from 'next/font/google';
 import './globals.css';
 import { SmoothScroll } from '@/components/smooth-scroll';
 import { CustomCursor } from '@/components/custom-cursor';
@@ -16,9 +16,10 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const dmMono = DM_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrains',
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-mono',
   display: 'swap',
 });
 
@@ -41,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${outfit.variable} ${jakarta.variable} ${jetbrainsMono.variable}`}
+      className={`${outfit.variable} ${jakarta.variable} ${dmMono.variable}`}
     >
       <body className="bg-bg text-text-primary antialiased selection:bg-white selection:text-black font-sans">
         <SmoothScroll>
