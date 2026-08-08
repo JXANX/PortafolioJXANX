@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { TbTerminal2, TbCheck, TbCornerDownLeft, TbSparkles } from 'react-icons/tb';
+import { TbTerminal2, TbCornerDownLeft } from 'react-icons/tb';
 
 interface CommandOutput {
   command: string;
@@ -15,7 +15,7 @@ export function InteractiveTerminal() {
       command: 'status',
       response: (
         <div className="space-y-1 text-xs font-mono">
-          <p className="text-white font-bold">🟢 DISPONIBLE / OPEN FOR ROLES</p>
+          <p className="text-white font-bold">[READY] DISPONIBLE / ABIERTO A ROLES</p>
           <p className="text-text-secondary">
             • Estudiante 6to Semestre Ingeniería de Software (IU EAM)
           </p>
@@ -78,9 +78,9 @@ export function InteractiveTerminal() {
       case 'contact':
         response = (
           <div className="text-xs font-mono text-text-secondary space-y-1">
-            <p className="text-white">📧 Email: castanedaloperaj@gmail.com</p>
-            <p className="text-text-secondary">💻 GitHub: https://github.com/JXANX</p>
-            <p className="text-text-muted">📍 Ubicación: Armenia, Quindío · Colombia</p>
+            <p className="text-white">Email: castanedaloperaj@gmail.com</p>
+            <p className="text-text-secondary">GitHub: https://github.com/JXANX</p>
+            <p className="text-text-muted">Ubicación: Armenia, Quindío · Colombia</p>
           </div>
         );
         break;
@@ -114,7 +114,7 @@ export function InteractiveTerminal() {
   }, [history]);
 
   return (
-    <div className="w-full max-w-2xl rounded-none border border-white/20 bg-bg-elevated/90 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-xl overflow-hidden font-mono text-left my-6 transition-all duration-300 hover:border-white/40">
+    <div className="w-full max-w-2xl rounded-none border border-white/20 bg-bg-elevated/95 overflow-hidden font-mono text-left my-6 transition-all duration-300 hover:border-white/40">
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 py-2.5 bg-bg-surface/80 border-b border-white/10 select-none">
         <div className="flex items-center gap-2">
@@ -142,7 +142,7 @@ export function InteractiveTerminal() {
       </div>
 
       {/* Terminal Body */}
-      <div ref={scrollContainerRef} className="p-4 space-y-3 max-h-64 overflow-y-auto custom-scrollbar text-xs">
+      <div ref={scrollContainerRef} className="p-4 space-y-3 max-h-64 overflow-y-auto text-xs">
         {history.map((item, idx) => (
           <div key={idx} className="space-y-1">
             <div className="flex items-center gap-2 text-text-muted">

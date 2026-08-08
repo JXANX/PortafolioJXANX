@@ -101,7 +101,7 @@ export function ParticleSunbeams() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-70"
+      className="hero-particles fixed inset-0 w-full h-full pointer-events-none z-0 opacity-70"
       aria-hidden="true"
     />
   );

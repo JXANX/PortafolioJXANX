@@ -25,6 +25,30 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     window.scrollTo(0, 0);
     lenis.scrollTo(0, { immediate: true });
 
+    // Smooth-scroll anchor navigation
+    const onClickAnchor = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const anchor = target?.closest('a[href^="#"]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+
+      e.preventDefault();
+
+      if (href === '#') {
+        lenis.scrollTo(0, { duration: 1.2 });
+        return;
+      }
+
+      const el = document.querySelector(href);
+      if (!el) return;
+
+      lenis.scrollTo(el as HTMLElement, { offset: -72, duration: 1.2 });
+    };
+
+    document.addEventListener('click', onClickAnchor);
+
     function updateLenis(time: number) {
       lenis.raf(time * 1000);
     }
@@ -35,6 +59,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      document.removeEventListener('click', onClickAnchor);
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
     };

@@ -1,13 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { SectionBg } from './section-bg';
+import { useSectionReveal } from './use-section-reveal';
 import { ProjectDrawer, ProjectDetail } from './project-drawer';
 import { TbArrowUpRight } from 'react-icons/tb';
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const lastTriggerRef = useRef<HTMLElement | null>(null);
+
+  useSectionReveal(sectionRef);
+
+  const openProject = (project: ProjectDetail, el: HTMLElement) => {
+    lastTriggerRef.current = el;
+    setSelectedProject(project);
+  };
+
+  const closeProject = () => {
+    setSelectedProject(null);
+    lastTriggerRef.current?.focus();
+    lastTriggerRef.current = null;
+  };
 
   const projects: (ProjectDetail & { image: string; aspect: string; colSpan: string })[] = [
     {
@@ -20,7 +36,7 @@ export function ProjectsSection() {
       stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'RabbitMQ', 'React'],
       category: 'Microservicios',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-schematic.png',
+      image: '/mono-schematic.webp',
       aspect: 'aspect-[16/10]',
       colSpan: 'md:col-span-7',
     },
@@ -34,7 +50,7 @@ export function ProjectsSection() {
       stack: ['Python', 'Playwright', 'Cloudflare Bypass', 'Web Scraping'],
       category: 'Automatización',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-terminal.png',
+      image: '/mono-terminal.webp',
       aspect: 'aspect-[3/4]',
       colSpan: 'md:col-span-5',
     },
@@ -48,7 +64,7 @@ export function ProjectsSection() {
       stack: ['Python', 'PostgreSQL', 'SQL Server', 'Control de Integridad'],
       category: 'Bases de Datos',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-keyboard.png',
+      image: '/mono-keyboard.webp',
       aspect: 'aspect-[3/4]',
       colSpan: 'md:col-span-5',
     },
@@ -62,26 +78,27 @@ export function ProjectsSection() {
       stack: ['Python', 'Docker', 'FastAPI', 'Playwright'],
       category: 'DevOps & Tooling',
       githubUrl: 'https://github.com/JXANX',
-      image: '/mono-projects.png',
+      image: '/mono-projects.webp',
       aspect: 'aspect-[16/10]',
       colSpan: 'md:col-span-7',
     },
   ];
 
   return (
-    <section id="projects" className="relative py-32 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/mono-contact.png" alt="Code Background" overlayOpacity={0.93} />
+    <section ref={sectionRef} id="projects" className="relative py-32 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/mono-projects.webp" alt="Code Background" overlayOpacity={0.93} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Selected Work Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <h2 className="font-display text-5xl sm:text-7xl font-black text-white tracking-tight uppercase">
-            SELECTED <span className="text-text-muted">WORK.</span>
+          <h2 data-reveal className="font-display text-5xl sm:text-7xl font-black text-white tracking-tight uppercase">
+            TRABAJO <span className="text-text-muted">SELECCIONADO.</span>
           </h2>
 
           <a
+            data-reveal
             href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-none border border-white/20 bg-[#0E0E12] text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 self-start md:self-auto"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-none border border-white/20 bg-card text-white hover:bg-white hover:text-black font-mono text-xs uppercase tracking-wider transition-all duration-300 self-start md:self-auto"
           >
             <span>Iniciar un Proyecto</span>
             <TbArrowUpRight className="h-4 w-4" />
@@ -93,8 +110,17 @@ export function ProjectsSection() {
           {projects.map((project) => (
             <div
               key={project.title}
-              onClick={() => setSelectedProject(project)}
-              className={`${project.colSpan} rounded-none border border-white/15 bg-[#0E0E12] p-5 cursor-pointer group flex flex-col justify-between transition-all duration-300 hover:border-white/40 hover:bg-[#121218]`}
+              role="button"
+              tabIndex={0}
+              aria-haspopup="dialog"
+              onClick={(e) => openProject(project, e.currentTarget)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openProject(project, e.currentTarget);
+                }
+              }}
+              className={`${project.colSpan} rounded-none border border-white/15 bg-card p-5 cursor-pointer group flex flex-col justify-between transition-all duration-300 hover:border-white/40 hover:bg-card-hover`}
             >
               <div>
                 {/* Header info bar */}
@@ -140,7 +166,7 @@ export function ProjectsSection() {
 
       <ProjectDrawer
         project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        onClose={closeProject}
       />
     </section>
   );

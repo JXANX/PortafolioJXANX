@@ -1,26 +1,31 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
 import { SectionBg } from './section-bg';
+import { useSectionReveal } from './use-section-reveal';
 import { PiShieldCheckeredFill, PiSealCheckFill } from 'react-icons/pi';
 import { TbSchool, TbCodeCircle, TbDatabase } from 'react-icons/tb';
 
 export function AboutSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const rowsRef = useRef<HTMLDivElement>(null);
+
+  useSectionReveal(sectionRef);
+  useSectionReveal(rowsRef, { selector: '[data-reveal-row]', stagger: 0.08, start: 'top 70%' });
+
   const experiences = [
     {
-      id: '01',
       title: 'Auditoría Informática Electoral',
       icon: PiShieldCheckeredFill,
       description: 'Auditor de procesos electorales en Quindío (2026). Bot Python + Playwright con bypass Cloudflare y generación masiva Word docx.',
     },
     {
-      id: '02',
       title: 'Arquitectura Backend Java',
       icon: TbCodeCircle,
       description: 'Desarrollo de microservicios con Spring Boot, APIs RESTful estructuradas, RabbitMQ y patrones SOLID.',
     },
     {
-      id: '03',
       title: 'Bases de Datos & SQL',
       icon: TbDatabase,
       description: 'Diseño de modelos relacionales en PostgreSQL y SQL Server, migración de datos con trazabilidad e integridad referencial.',
@@ -28,13 +33,13 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="relative py-28 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/mono-about.png" alt="Engineering Code Background" overlayOpacity={0.92} />
+    <section ref={sectionRef} id="about" className="relative py-28 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/mono-about.webp" alt="Engineering Code Background" overlayOpacity={0.92} />
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-white max-w-3xl tracking-tight leading-[1.08]">
+          <h2 data-reveal className="font-display text-4xl sm:text-6xl font-black text-white max-w-3xl tracking-tight leading-[1.08]">
             Ingeniería de software con dedicación &amp; rigor técnico.
           </h2>
         </div>
@@ -44,21 +49,21 @@ export function AboutSection() {
           
           {/* Left: About Image (Flat Abstract Frame) */}
           <div className="lg:col-span-4">
-            <div className="relative aspect-[3/4] w-full rounded-none overflow-hidden border border-white/15 bg-[#0E0E12]">
+            <div className="relative aspect-[3/4] w-full rounded-none overflow-hidden border border-white/15 bg-card">
               <Image
-                src="/mono-about.png"
+                src="/mono-about.webp"
                 alt="Engineering workspace"
                 fill
                 className="object-cover grayscale contrast-125 opacity-70"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
             </div>
           </div>
 
           {/* Right: Bio + Education Flat Cards */}
           <div className="lg:col-span-8 space-y-6">
             {/* Bio Card */}
-            <div className="rounded-none border border-white/15 bg-[#0E0E12] p-8 space-y-5">
+            <div className="rounded-none border border-white/15 bg-card p-8 space-y-5">
               <p className="text-lg md:text-xl font-display font-semibold text-white leading-relaxed border-l-2 border-white pl-4">
                 Soy <span className="text-white font-bold">Juan Camilo</span>, estudiante de 6to semestre de Ingeniería de Software en la IU EAM (Armenia, Quindío).
               </p>
@@ -81,7 +86,7 @@ export function AboutSection() {
 
             {/* Education + Cert Row (Side by Side Flat) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="rounded-none border border-white/15 bg-[#0E0E12] p-6 space-y-4">
+              <div className="rounded-none border border-white/15 bg-card p-6 space-y-4">
                 <div className="flex items-center gap-3 text-white">
                   <TbSchool className="h-5 w-5" />
                   <h3 className="font-display font-bold text-white text-base">
@@ -100,7 +105,7 @@ export function AboutSection() {
                 </div>
               </div>
 
-              <div className="rounded-none border border-white/15 bg-[#0E0E12] p-6 flex items-start gap-4">
+              <div className="rounded-none border border-white/15 bg-card p-6 flex items-start gap-4">
                 <PiSealCheckFill className="h-10 w-10 text-white shrink-0 mt-1" />
                 <div>
                   <h4 className="font-display font-bold text-white text-base mb-1">Scrum Fundamentals Certified</h4>
@@ -115,20 +120,21 @@ export function AboutSection() {
         </div>
 
         {/* Process / Experience List (Editorial Flat Rows) */}
-        <div className="space-y-0 pt-6">
+        <div ref={rowsRef} className="space-y-0 pt-6">
           <h3 className="font-display text-2xl font-bold text-white border-b border-white/15 pb-4 mb-0">
-            Áreas de Especialidad &amp; Proceso
+            Áreas de Especialidad
           </h3>
 
           {experiences.map((exp) => {
             const Icon = exp.icon;
             return (
               <div
-                key={exp.id}
+                key={exp.title}
+                data-reveal-row
                 className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-5 border-b border-white/10 group hover:bg-white/[0.03] transition-all px-2 -mx-2"
               >
                 <div className="flex items-center gap-4 min-w-[280px]">
-                  <div className="p-2 rounded-none border border-white/15 bg-[#0E0E12]">
+                  <div className="p-2 rounded-none border border-white/15 bg-card">
                     <Icon className="h-4 w-4 text-white" />
                   </div>
                   <h4 className="font-display font-bold text-lg text-white group-hover:underline underline-offset-4 transition-all">

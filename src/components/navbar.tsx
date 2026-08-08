@@ -25,7 +25,7 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'py-3 bg-bg/80 backdrop-blur-xl border-b border-white/10'
+          ? 'py-3 bg-bg/90 border-b border-white/10'
           : 'py-5 bg-transparent'
       }`}
     >
@@ -61,7 +61,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 ghibli-glass mx-4 mt-2 p-6 rounded-none space-y-4">
+        <div className="md:hidden absolute top-full left-0 right-0 panel mx-4 mt-2 p-6 rounded-none space-y-4">
           {links.map((link) => (
             <Link
               key={link.href}

@@ -1,14 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { SectionBg } from './section-bg';
+import { useSectionReveal } from './use-section-reveal';
 import { TbMailFilled, TbCopy, TbCheck, TbArrowUpRight, TbSend2, TbClock } from 'react-icons/tb';
 import { PiMapPinFill } from 'react-icons/pi';
 import { SiGithub } from 'react-icons/si';
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const email = 'castanedaloperaj@gmail.com';
+
+  useSectionReveal(sectionRef);
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -17,8 +21,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 md:px-12 overflow-hidden">
-      <SectionBg src="/mono-contact.png" alt="Matrix Cyberpunk Dark Background" overlayOpacity={0.93} />
+    <section ref={sectionRef} id="contact" className="relative py-32 px-6 md:px-12 overflow-hidden">
+      <SectionBg src="/mono-contact.webp" alt="Matrix Cyberpunk Dark Background" overlayOpacity={0.93} />
 
       {/* Monochrome ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
@@ -26,10 +30,10 @@ export function ContactSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Headline */}
         <div className="mb-16 space-y-4 max-w-3xl">
-          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
-            Let&apos;s create something <span className="text-text-muted underline decoration-white/40 underline-offset-8">great together.</span>
+          <h2 data-reveal className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
+            Construyamos algo <span className="text-text-muted underline decoration-white/40 underline-offset-8">grande juntos.</span>
           </h2>
-          <p className="text-text-secondary text-base sm:text-xl font-sans leading-relaxed">
+          <p data-reveal className="text-text-secondary text-base sm:text-xl font-sans leading-relaxed">
             Disponible para desarrollo backend/frontend, arquitectura de microservicios, consultoría o vacantes de ingeniería de software.
           </p>
         </div>
@@ -37,7 +41,7 @@ export function ContactSection() {
         {/* Contact Cards Flat Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* 1. Direct Email Card */}
-          <div className="md:col-span-7 rounded-none border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all">
+          <div className="md:col-span-7 rounded-none border border-white/15 bg-card p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-card-hover transition-all">
             <div>
               <div className="flex items-center justify-between mb-8">
                 <div className="p-3 rounded-none bg-white/5 border border-white/15 text-white">
@@ -55,7 +59,7 @@ export function ContactSection() {
                   ) : (
                     <>
                       <TbCopy className="h-4 w-4 text-white" />
-                      <span>Copiar Email</span>
+                      <span>Copiar correo</span>
                     </>
                   )}
                 </button>
@@ -77,7 +81,6 @@ export function ContactSection() {
                 <span>Enviar correo ahora</span>
                 <TbSend2 className="h-4 w-4" />
               </a>
-              <span className="text-[10px] font-mono text-text-muted">RESPUESTA RÁPIDA</span>
             </div>
           </div>
 
@@ -86,7 +89,7 @@ export function ContactSection() {
             href="https://github.com/JXANX"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-5 rounded-none border border-white/15 bg-[#0E0E12] p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-[#121218] transition-all"
+            className="md:col-span-5 rounded-none border border-white/15 bg-card p-8 md:p-10 flex flex-col justify-between group space-y-8 hover:border-white/40 hover:bg-card-hover transition-all"
           >
             <div>
               <div className="flex items-center justify-between mb-8">
@@ -113,7 +116,7 @@ export function ContactSection() {
           </a>
 
           {/* 3. Location Card */}
-          <div className="md:col-span-12 rounded-none border border-white/15 bg-[#0E0E12] p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-l-4 border-l-white">
+          <div className="md:col-span-12 rounded-none border border-white/15 bg-card p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-l-4 border-l-white">
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-xs font-mono text-white uppercase font-bold">
                 <PiMapPinFill className="h-4 w-4" />

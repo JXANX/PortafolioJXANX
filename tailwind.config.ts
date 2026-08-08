@@ -13,13 +13,12 @@ const config: Config = {
           DEFAULT: "var(--bg, #0D0B0E)",
           elevated: "var(--bg-elevated, #161318)",
           surface: "var(--bg-surface, #1E1A22)",
+          card: "var(--bg-card, #0E0E12)",
+          "card-hover": "var(--bg-card-hover, #121218)",
         },
-        ghibli: {
-          amber: "var(--ghibli-amber, #D99B26)",
-          "amber-glow": "var(--ghibli-amber-glow, #E8AE3B)",
-          sage: "var(--ghibli-sage, #5A8A6A)",
-          "sage-light": "var(--ghibli-sage-light, rgba(90, 138, 106, 0.12))",
-          terracotta: "var(--ghibli-terracotta, #C86D51)",
+        accent: {
+          DEFAULT: "var(--accent, #FFFFFF)",
+          strong: "var(--accent-strong, #F0F0F5)",
         },
         text: {
           primary: "var(--text-primary, #F0EBE3)",
@@ -31,25 +30,6 @@ const config: Config = {
         display: ["var(--font-outfit)", "sans-serif"],
         sans: ["var(--font-jakarta)", "sans-serif"],
         mono: ["var(--font-dm-mono)", "monospace"],
-      },
-      animation: {
-        float: "float 6s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
-        },
-        "fade-in-up": {
-          from: { opacity: "0", transform: "translateY(24px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
       },
     },
   },

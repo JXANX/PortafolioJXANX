@@ -6,13 +6,13 @@
   --bg: #0A0A0C;
   --bg-elevated: #121216;
   --bg-surface: #1A1A22;
-  --ghibli-amber: #FFFFFF;
-  --ghibli-amber-glow: #F0F0F5;
-  --ghibli-sage: #D0D0DA;
-  --ghibli-terracotta: #A0A0B0;
+  --bg-card: #0E0E12;
+  --bg-card-hover: #121218;
+  --accent: #FFFFFF;
+  --accent-strong: #F0F0F5;
   --text-primary: #FFFFFF;
   --text-secondary: #B8B8C5;
-  --text-muted: #6E6E7E;
+  --text-muted: #8A8A99;
   --font-display: var(--font-outfit), sans-serif;
   --font-sans: var(--font-jakarta), sans-serif;
   --font-mono: var(--font-dm-mono), monospace;
@@ -53,9 +53,15 @@ html.lenis, html.lenis body { height: auto; }
   body.custom-cursor-active [role="button"] { cursor: none !important; }
 }
 
-/* Flat Monochrome Cards - Literal Flat Design */
-.ghibli-glass {
-  background: #0E0E12;
+/* Keyboard focus: monochrome outline, visible without relying on the custom cursor */
+:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+/* Flat Monochrome Panels - Literal Flat Design */
+.panel {
+  background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0px;
   box-shadow: none !important;
@@ -63,34 +69,11 @@ html.lenis, html.lenis body { height: auto; }
   transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.ghibli-glass:hover {
+.panel:hover {
   border-color: rgba(255, 255, 255, 0.35);
-  background-color: #121218;
+  background-color: var(--bg-card-hover);
   box-shadow: none !important;
   transform: none !important;
-}
-
-.ghibli-glass-light {
-  background: #14141A;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 0px;
-  box-shadow: none !important;
-}
-
-/* Card Tint Flat Monochrome Gradients */
-.card-tint-mint {
-  background: rgba(14, 14, 18, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.card-tint-peach {
-  background: rgba(14, 14, 18, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.card-tint-amber {
-  background: rgba(14, 14, 18, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Section Background */
@@ -135,7 +118,5 @@ html.lenis, html.lenis body { height: auto; }
 
 /* Drawer Backdrop */
 .drawer-backdrop {
-  background: rgba(10, 10, 12, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 10, 12, 0.9);
 }

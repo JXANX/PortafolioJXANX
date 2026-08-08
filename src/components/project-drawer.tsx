@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
+import Image from 'next/image';
 import { TbX, TbArrowUpRight, TbCheck } from 'react-icons/tb';
 import gsap from 'gsap';
 
@@ -12,6 +13,7 @@ export interface ProjectDetail {
   highlights: string[];
   stack: string[];
   category: string;
+  image: string;
   githubUrl?: string;
 }
 
@@ -23,7 +25,9 @@ interface ProjectDrawerProps {
 export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const isClosingRef = useRef(false);
+  const titleId = useId();
 
   useEffect(() => {
     if (!project) return;
@@ -45,8 +49,34 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
         );
     });
 
+    closeBtnRef.current?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') triggerClose();
+      if (e.key === 'Escape') {
+        triggerClose();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusables = Array.from(
+          drawerRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+          ) ?? []
+        ).filter((el) => !el.hasAttribute('hidden'));
+
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -88,8 +118,11 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
       {/* Drawer Panel — Flat Monochrome & GSAP Animated */}
       <div
         ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         data-lenis-prevent
-        className="relative w-full max-w-2xl h-full bg-[#0A0A0C] border-l border-white/20 p-6 sm:p-10 z-10 overflow-y-auto flex flex-col justify-between"
+        className="relative w-full max-w-2xl h-full bg-bg border-l border-white/20 p-6 sm:p-10 z-10 overflow-y-auto flex flex-col justify-between"
       >
         <div>
           {/* Top Bar with Close Action */}
@@ -102,6 +135,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
             </button>
 
             <button
+              ref={closeBtnRef}
               onClick={triggerClose}
               className="p-2 rounded-none border border-white/10 text-text-secondary hover:text-text-primary hover:border-white transition-colors"
               aria-label="Cerrar panel"
@@ -115,7 +149,7 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
             <span className="font-mono text-xs text-white font-bold tracking-wider uppercase block mb-2">
               {project.category}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-2">
+            <h2 id={titleId} className="font-display text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-2">
               {project.title}
             </h2>
             <p className="font-sans text-base text-text-secondary">
@@ -124,23 +158,17 @@ export function ProjectDrawer({ project, onClose }: ProjectDrawerProps) {
           </div>
 
           {/* Visual Preview Graphic Box */}
-          <div className="drawer-anim-item w-full aspect-video rounded-none bg-[#0E0E12] border border-white/15 p-6 flex flex-col justify-between mb-8 relative overflow-hidden">
-            <div className="flex items-center justify-between font-mono text-xs text-white">
-              <span>ESQUEMA DE ARQUITECTURA TÉCNICA</span>
+          <div className="drawer-anim-item w-full aspect-video rounded-none bg-card border border-white/15 mb-8 relative overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover grayscale contrast-125 opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-bg/30" />
+            <div className="absolute top-0 inset-x-0 flex items-center justify-between font-mono text-xs text-white p-4">
+              <span>VISTA DEL PROYECTO</span>
               <span className="h-2.5 w-2.5 rounded-none bg-white" />
-            </div>
-
-            <div className="my-auto text-center space-y-3">
-              <h3 className="font-display text-2xl font-bold text-white">
-                {project.title}
-              </h3>
-              <p className="font-mono text-[11px] text-text-secondary tracking-wide">
-                {project.stack.slice(0, 5).join(' · ')}
-              </p>
-            </div>
-
-            <div className="font-mono text-[10px] text-text-muted text-right">
-              PROCESADO CON INTEGRIDAD &amp; SOLID
             </div>
           </div>
 

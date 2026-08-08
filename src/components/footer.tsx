@@ -1,12 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { SectionBg } from './section-bg';
 
 export function Footer() {
   return (
     <footer className="relative w-full overflow-hidden py-16 px-6 md:px-12 border-t border-white/10">
-      <SectionBg src="/mono-hero.png" alt="Monochrome Footer background" overlayOpacity={0.95} />
 
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col gap-1 text-center md:text-left">
