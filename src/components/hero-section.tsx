@@ -205,7 +205,7 @@ export function HeroSection() {
             <div className="panel p-3 rounded-none border border-white/15 bg-card space-y-3 group hover:border-white/40 transition-all duration-300">
               <div className="relative aspect-[3/4] w-full rounded-none overflow-hidden grayscale contrast-125 border border-white/10">
                 <Image
-                  src="/mono-schematic.webp"
+                  src="/mono-hero.png"
                   alt=""
                   fill
                   priority
